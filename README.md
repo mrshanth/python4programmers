@@ -1,8 +1,8 @@
 # 'Python 4 Programmers' Presentation notebooks
 
-## Contributors
-Fülöp András
-Andrási László
+
 
 ## copyright
+Fülöp András & Andrási László
+
 lensa.com
