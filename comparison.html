@@ -1,0 +1,1521 @@
+<table class="wiki-content-table"><tbody><tr><th><a name="general" id="general"></a></th>
+<th><a href="#javascript">javascript</a></th>
+<th><a href="#php">php</a></th>
+<th><a href="#python">python</a></th>
+
+</tr><tr><td><a name="version-used" id="version-used"></a><a href="#version-used-note">versions used</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td></td>
+<td><span style="color: gray"><em>5.4; 5.5</em></span></td>
+<td><span style="color: gray"><em>2.7; 3.3</em></span></td>
+
+</tr><tr><td><a name="version" id="version"></a><a href="#version-note">show version</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>$ node <span style="white-space: pre-wrap;">--</span>version</td>
+<td>$ php <span style="white-space: pre-wrap;">--</span>version</td>
+<td>$ python -V<br>
+$ python <span style="white-space: pre-wrap;">--</span>version</td>
+
+</tr><tr><td><a name="implicit-prologue" id="implicit-prologue"></a><a href="#implicit-prologue-note">implicit prologue</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>&lt;script src="underscore.js"&gt;<br>
+&lt;/script&gt;</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: purple">import</span> os, re, sys</td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="grammar-invocation" id="grammar-invocation"></a><a href="#grammar-invocation-note">grammar and invocation</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="interpreter" id="interpreter"></a><a href="#interpreter-note">interpreter</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>$ node foo.js</td>
+<td>$ php -f foo.php</td>
+<td>$ python foo.py</td>
+
+</tr><tr><td><a name="repl" id="repl"></a><a href="#repl-note">repl</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>$ node</td>
+<td>$ php -a</td>
+<td>$ python</td>
+
+</tr><tr><td><a name="cmd-line-program" id="cmd-line-program"></a><a href="#cmd-line-program-note">command line program</a></td>
+<td>$ node -e 'var sys = require("sys");<br>
+sys.puts("hi world!");'</td>
+<td>$ php -r 'echo "hi\n";'</td>
+<td>$ python -c 'print("hi")'</td>
+
+</tr><tr><td><a name="block-delimiters" id="block-delimiters"></a><a href="#block-delimiters-note">block delimiters</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>{}</td>
+<td>{}</td>
+<td>: <span style="color: gray"><em>and offside rule</em></span></td>
+
+</tr><tr><td><a name="statement-separator" id="statement-separator"></a><a href="#statement-separator-note">statement separator</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>; or newline<br><br>
+newline not separator inside (), [], {}, "", '', or after binary operator<br><br>
+newline sometimes not separator when following line would not parse as a valid statement</em></span></td>
+<td>;<br><br><span style="color: gray"><em>statements must be semicolon terminated inside {}</em></span></td>
+<td><span style="color: gray"><em>newline or</em></span> ;<br><br><span style="color: gray"><em>newlines not separators inside (), [], {}, triple quote literals, or after backslash: <span style="white-space: pre-wrap;">\</span></em></span></td>
+
+</tr><tr><td><a name="source-code-encoding" id="source-code-encoding"></a><a href="#source-code-encoding-note">source code encoding</a></td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>Python 3 source is UTF-8 by default</em></span><br><br><span style="color: gray"># -*- coding: utf-8 -*-</span></td>
+
+</tr><tr><td><a name="eol-comment" id="eol-comment"></a><a href="#eol-comment-note">end-of-line comment</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><span style="white-space: pre-wrap;">//</span> comment</span></td>
+<td><span style="color: gray"><span style="white-space: pre-wrap;">//</span> comment<br>
+# comment</span></td>
+<td><span style="color: gray"># comment</span></td>
+
+</tr><tr><td><a name="multiple-line-comment" id="multiple-line-comment"></a><a href="#multiple-line-comment-note">multiple line comment</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray">/* line<br>
+another line */</span></td>
+<td><span style="color: gray">/* comment line<br>
+another line */</span></td>
+<td><span style="color: gray"><em>use triple quote string literal:</em></span><br><br><span style="color: maroon">'''comment line<br>
+another line'''</span></td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="var-expr" id="var-expr"></a><a href="#var-expr-note">variables and expressions</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="local-var" id="local-var"></a><a href="#local-var-note">local variable</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>var x = 1;</td>
+<td><span style="color: gray"># in function body:</span><br>
+$<span style="color: peru">v</span> = <span style="color: teal">NULL</span>;<br>
+$<span style="color: peru">a</span> = [];<br>
+$<span style="color: peru">d</span> = [];<br>
+$<span style="color: peru">x</span> = 1;<br>
+list($<span style="color: peru">y</span>, $<span style="color: peru">z</span>) = [2, 3];</td>
+<td><span style="color: gray"># in function body:</span><br><span style="color: peru">v</span> = <span style="color: teal">None</span><br><span style="color: peru">a</span>, <span style="color: peru">d</span> = [], {}<br><span style="color: peru">x</span> = 1<br><span style="color: peru">y</span>, <span style="color: peru">z</span> = 2, 3</td>
+
+</tr><tr><td><a name="local-scope-regions" id="local-scope-regions"></a><a href="#local-scope-regions-note">regions which define lexical scope</a></td>
+<td><span style="color: gray"><em>top level:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>html page<br><br>
+nestable:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>function</em></span></td>
+<td><span style="color: gray"><em>top level:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>function or method body<br><br>
+nestable (with use clause):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>anonymous function body</em></span></td>
+<td><span style="color: gray"><em>nestable (read only):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>function or method body</em></span></td>
+
+</tr><tr><td><a name="global-var" id="global-var"></a><a href="#global-var-note">global variable</a></td>
+<td><span style="color: gray"><span style="white-space: pre-wrap;">//</span> assign without using var</span><br>
+g = 1;<br><br>
+function incr_global () { g++; }</td>
+<td>list($<span style="color: peru">g1</span>, $<span style="color: peru">g2</span>) = [7, 8];<br><br><span style="color: purple">function</span> <span style="color: #0000cd">swap_globals</span>() {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">global</span> $<span style="color: peru">g1</span>, $<span style="color: peru">g2</span>;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>list($<span style="color: peru">g1</span>, $<span style="color: peru">g2</span>) = [$<span style="color: peru">g2</span>, $<span style="color: peru">g1</span>];<br>
+}</td>
+<td><span style="color: peru">g1</span>, <span style="color: peru">g2</span> = 7, 8<br><br><span style="color: purple">def</span> <span style="color: #0000cd">swap_globals</span>():<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">global</span> g1, g2<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>g1, g2 = g2, g1</td>
+
+</tr><tr><td><a name="const" id="const"></a><a href="#const-note">constant</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>define(<span style="color: maroon">"PI"</span>, 3.14);</td>
+<td><span style="color: gray"># uppercase identifiers<br>
+# constant by convention</span><br><span style="color: peru">PI</span> = 3.14</td>
+
+</tr><tr><td><a name="assignment" id="assignment"></a><a href="#assignment-note">assignment</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>x = 1;</td>
+<td>$<span style="color: peru">v</span> = 1;</td>
+<td><span style="color: gray"><em>assignments can be chained but otherwise don't return values:</em></span><br><span style="color: peru">v</span> = 1</td>
+
+</tr><tr><td><a name="parallel-assignment" id="parallel-assignment"></a><a href="#parallel-assignment-note">parallel assignment</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>list($<span style="color: peru">x</span>, $<span style="color: peru">y</span>, $<span style="color: peru">z</span>) = [1 ,2, 3];<br><br><span style="color: gray"># 3 is discarded:</span><br>
+list($<span style="color: peru">x</span>, $<span style="color: peru">y</span>) = [1, 2, 3];<br><br><span style="color: gray"># $z set to NULL:</span><br>
+list($<span style="color: peru">x</span>, $<span style="color: peru">y</span>, $<span style="color: peru">z</span>) = [1, 2];</td>
+<td><span style="color: peru">x</span>, <span style="color: peru">y</span>, <span style="color: peru">z</span> = 1, 2, 3<br><br><span style="color: gray"># raises ValueError:</span><br><span style="color: peru">x</span>, <span style="color: peru">y</span> = 1, 2, 3<br><br><span style="color: gray"># raises ValueError:</span><br><span style="color: peru">x</span>, <span style="color: peru">y</span>, <span style="color: peru">z</span> = 1, 2</td>
+
+</tr><tr><td><a name="swap" id="swap"></a><a href="#swap-note">swap</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>tmp = x;<br>
+x = y;<br>
+y = tmp;</td>
+<td>list($<span style="color: peru">x</span>, $<span style="color: peru">y</span>) = [$<span style="color: peru">y</span>, $<span style="color: peru">x</span>];</td>
+<td><span style="color: peru">x</span>, <span style="color: peru">y</span> = y, x</td>
+
+</tr><tr><td><a name="compound-assignment" id="compound-assignment"></a><a href="#compound-assignment-note">compound assignment</a><br><span style="color: gray"><em>arithmetic, string, logical, bit</em></span></td>
+<td>+= -= *= /= <span style="color: gray"><em>none</em></span> %=<br>
++=<br><span style="color: gray"><em>none</em></span><br><span style="white-space: pre-wrap;">&lt;&lt;= &gt;&gt;= </span>&amp;= |= ^=</td>
+<td>+= -= *= <span style="color: gray"><em>none</em></span> /= %= <span style="white-space: pre-wrap;">**</span>=<br>
+.= <span style="color: gray"><em>none</em></span><br>
+&amp;= |= <span style="color: gray"><em>none</em></span><br><span style="white-space: pre-wrap;">&lt;&lt;= &gt;&gt;= </span>&amp;= |= ^=</td>
+<td><span style="color: gray"># do not return values:</span><br>
++= -= *= /= <span style="white-space: pre-wrap;">//</span>= %= <span style="white-space: pre-wrap;">**</span>=<br>
++= *=<br>
+&amp;= <span style="white-space: pre-wrap;">|</span>= ^=<br><span style="white-space: pre-wrap;">&lt;&lt;= &gt;&gt;= </span>&amp;= |= ^=</td>
+
+</tr><tr><td><a name="incr-decr" id="incr-decr"></a><a href="#incr-decr-note">increment and decrement</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>var x = 1;<br>
+var y = ++x;<br>
+var z = <span style="white-space: pre-wrap;">--</span>y;</td>
+<td>$<span style="color: peru">x</span> = 1;<br>
+$<span style="color: peru">y</span> = ++$<span style="color: peru">x</span>;<br>
+$<span style="color: peru">z</span> = <span style="white-space: pre-wrap;">--</span>$<span style="color: peru">y</span>;</td>
+<td><span style="color: gray"><em>none</em></span></td>
+
+</tr><tr><td><a name="null" id="null"></a><a href="#null-note">null</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>null</td>
+<td><span style="color: teal">NULL</span> <span style="color: gray"># case insensitive</span></td>
+<td><span style="color: teal">None</span></td>
+
+</tr><tr><td><a name="null-test" id="null-test"></a><a href="#null-test-note">null test</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>v === null</td>
+<td>is_null($<span style="color: peru">v</span>)<br>
+! isset($<span style="color: peru">v</span>)</td>
+<td>v == <span style="color: teal">None</span><br>
+v <span style="color: purple">is</span> <span style="color: teal">None</span></td>
+
+</tr><tr><td><a name="undef-access" id="undef-access"></a><a href="#undef-access-note">undefined variable access</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>undefined</td>
+<td><span style="color: teal">NULL</span></td>
+<td><span style="color: gray"><em>raises</em> NameError</span></td>
+
+</tr><tr><td><a name="conditional-expr" id="conditional-expr"></a><a href="#conditional-expr-note">conditional expression</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>x &gt; 0 ? x : -x</td>
+<td>$<span style="color: peru">x</span> &gt; 0 ? $<span style="color: peru">x</span> : -$<span style="color: peru">x</span></td>
+<td>x <span style="color: purple">if</span> x &gt; 0 <span style="color: purple">else</span> -x</td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="arithmetic-logic" id="arithmetic-logic"></a><a href="#arithmetic-logic-note">arithmetic and logic</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="true-false" id="true-false"></a><a href="#true-false-note">true and false</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>true false</td>
+<td><span style="color: teal">TRUE FALSE</span> <span style="color: gray"># case insensitive</span></td>
+<td><span style="color: purple">True False</span></td>
+
+</tr><tr><td><a name="falsehoods" id="falsehoods"></a><a href="#falsehoods-note">falsehoods</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>false null undefined "" 0 NaN</td>
+<td><span style="color: teal">FALSE NULL</span> 0&nbsp;0.0 <span style="color: maroon">"" "0"</span> []</td>
+<td><span style="color: purple">False</span> <span style="color: teal">None</span> 0&nbsp;0.0 <span style="color: maroon">''</span> [] {}</td>
+
+</tr><tr><td><a name="logical-op" id="logical-op"></a><a href="#logical-op-note">logical operators</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="white-space: pre-wrap;">&amp;&amp; ||</span> !</td>
+<td>&amp;&amp; <span style="white-space: pre-wrap;">||</span> !<br><span style="color: gray"><em>lower precedence:</em></span><br><span style="color: purple">and or xor</span></td>
+<td><span style="color: purple">and or not</span></td>
+
+</tr><tr><td><a name="relational-op" id="relational-op"></a><a href="#relational-op-note">relational operators</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="white-space: pre-wrap;">===</span> !== &lt; &gt; &gt;= &lt;=<br><br><span style="color: gray"><em>perform type coercion:</em></span><br><span style="white-space: pre-wrap;">==</span> !=</td>
+<td>== != <span style="color: gray"><em>or</em></span> &lt;&gt; &gt; &lt; &gt;= &lt;=<br><span style="color: gray"><em>no conversion:</em></span> === !==</td>
+<td><span style="color: gray"><em>relational operators are chainable:</em></span><br>
+== != &gt; &lt; &gt;= &lt;=</td>
+
+</tr><tr><td><a name="min-max" id="min-max"></a><a href="#min-max-note">min and max</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>Math.min(1, 2, 3)<br>
+Math.max(1, 2, 3)<br><br>
+Math.min.apply(Math, [1, 2, 3])<br>
+Math.max.apply(Math, [1, 2, 3])</td>
+<td>min(1, 2, 3)<br>
+max(1, 2, 3)<br>
+$<span style="color: peru">a</span> = [1, 2, 3]<br>
+min($<span style="color: peru">a</span>)<br>
+max($<span style="color: peru">a</span>)</td>
+<td><span style="color: purple">min</span>(1, 2, 3)<br><span style="color: purple">max</span>(1, 2, 3)<br><br><span style="color: purple">min</span>([1, 2, 3])<br><span style="color: purple">max</span>([1, 2, 3])</td>
+
+</tr><tr><td><a name="three-val-comparison" id="three-val-comparison"></a><a href="#three-val-comparison-note">three value comparison</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>removed from Python 3:</em></span><br><span style="color: purple">cmp</span>(0, 1)<br><span style="color: purple">cmp</span>(<span style="color: maroon">'do'</span>, <span style="color: maroon">'re'</span>)</td>
+
+</tr><tr><td><a name="arith-op" id="arith-op"></a><a href="#arith-op-note">arithmetic operators</a><br><span style="color: gray"><em>addition, subtraction, multiplication, float division, quotient, remainder</em></span></td>
+<td>+ - * / <span style="color: gray"><em>none</em></span> %</td>
+<td>+ - * / <span style="color: gray"><em>none</em></span> %</td>
+<td>+ - * <span style="color: gray"><em>see note</em></span> // %<br><br><span style="color: gray"><em>Python 2 does not have an operator which performs float division on integers. In Python 3 / always performs float division.</em></span></td>
+
+</tr><tr><td><a name="int-div" id="int-div"></a><a href="#int-div-note">integer division</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>Math.floor(x / y)</td>
+<td>(<span style="color: green">int</span>)(13 / 5)</td>
+<td>13 // 5</td>
+
+</tr><tr><td><a name="divmod" id="divmod"></a><a href="#divmod-note">divmod</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>q, r = <span style="color: purple">divmod</span>(13, 5)</td>
+
+</tr><tr><td><a name="int-div-zero" id="int-div-zero"></a><a href="#int-div-zero-note">integer division by zero</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>returns assignable value Infinity, NaN, or -Infinity depending upon whether dividend is positive, zero, or negative.<br><br>
+There are literals for Infinity and NaN.</em></span></td>
+<td><span style="color: gray"><em>returns</em> FALSE <em>with warning</em></span></td>
+<td><span style="color: gray"><em>raises</em> ZeroDivisionError</span></td>
+
+</tr><tr><td><a name="float-div" id="float-div"></a><a href="#float-div-note">float division</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>13 / 5</td>
+<td>13 / 5</td>
+<td><span style="color: purple">float</span>(13) / 5<br><br><span style="color: gray"># Python 3:</span><br>
+13 / 5</td>
+
+</tr><tr><td><a name="float-div-zero" id="float-div-zero"></a><a href="#float-div-zero-note">float division by zero</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>same behavior as for integers</em></span></td>
+<td><span style="color: gray"><em>returns</em> FALSE <em>with warning</em></span></td>
+<td><span style="color: gray"><em>raises</em> ZeroDivisionError</span></td>
+
+</tr><tr><td><a name="power" id="power"></a><a href="#power-note">power</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>Math.pow(2, 32)</td>
+<td>pow(2, 32)</td>
+<td>2<span style="white-space: pre-wrap;">**</span>32</td>
+
+</tr><tr><td><a name="sqrt" id="sqrt"></a><a href="#sqrt-note">sqrt</a></td>
+<td>Math.sqrt(2)</td>
+<td>sqrt(2)</td>
+<td><span style="color: purple">import</span> math<br><br>
+math.sqrt(2)</td>
+
+</tr><tr><td><a name="sqrt-negative-one" id="sqrt-negative-one"></a><a href="#sqrt-negative-one-note">sqrt -1</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>NaN</td>
+<td>NaN</td>
+<td><span style="color: gray"># raises ValueError:</span><br><span style="color: purple">import</span> math<br>
+math.sqrt(-1)<br><br><span style="color: gray"># returns complex float:</span><br><span style="color: purple">import</span> cmath<br>
+cmath.sqrt(-1)</td>
+
+</tr><tr><td><a name="transcendental-func" id="transcendental-func"></a><a href="#transcendental-func-note">transcendental functions</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>Math.exp Math.log Math.sin Math.cos Math.tan Math.asin Math.acos Math.atan Math.atan2</td>
+<td>exp log sin cos tan asin acos atan atan2</td>
+<td><span style="color: purple">from</span> math <span style="color: purple">import</span> exp, log, \<br>
+sin, cos, tan, asin, acos, atan, atan2</td>
+
+</tr><tr><td><a name="transcendental-const" id="transcendental-const"></a><a href="#transcendental-const-note">transcendental constants</a><br><span style="color: gray"><em>π and e</em></span></td>
+<td>Math.PI<br>
+Math.E</td>
+<td><span style="color: teal">M_PI M_E</span></td>
+<td>import <span style="color: purple">math</span><br><br>
+math.pi math.e</td>
+
+</tr><tr><td><a name="float-truncation" id="float-truncation"></a><a href="#float-truncation-note">float truncation</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span><br>
+Math.round(3.1)<br>
+Math.floor(3.1)<br>
+Math.ceil(3.1)</td>
+<td>(<span style="color: green">int</span>)$<span style="color: peru">x</span><br>
+round($<span style="color: peru">x</span>)<br>
+ceil($<span style="color: peru">x</span>)<br>
+floor($<span style="color: peru">x</span>)</td>
+<td><span style="color: purple">import</span> math<br><br><span style="color: purple">int</span>(x)<br><span style="color: purple">int</span>(<span style="color: purple">round</span>(x))<br>
+math.ceil(x)<br>
+math.floor(x)</td>
+
+</tr><tr><td><a name="abs-val" id="abs-val"></a><a href="#abs-val-note">absolute value</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>Math.abs(-3)</td>
+<td>abs($<span style="color: peru">x</span>)</td>
+<td><span style="color: purple">abs</span>(x)</td>
+
+</tr><tr><td><a name="int-overflow" id="int-overflow"></a><a href="#int-overflow-note">integer overflow</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>all numbers are floats</em></span></td>
+<td><span style="color: gray"><em>converted to float</em></span></td>
+<td><span style="color: gray"><em>becomes arbitrary length integer of type</em> long</span></td>
+
+</tr><tr><td><a name="float-overflow" id="float-overflow"></a><a href="#float-overflow-note">float overflow</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>Infinity</td>
+<td>INF</td>
+<td><span style="color: gray"><em>raises</em> OverflowError</span></td>
+
+</tr><tr><td><a name="rational-construction" id="rational-construction"></a><a href="#rational-construction-note">rational construction</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: purple">from</span> fractions <span style="color: purple">import</span> Fraction<br><br><span style="color: peru">x</span> = Fraction(22, 7)</td>
+
+</tr><tr><td><a name="rational-decomposition" id="rational-decomposition"></a><a href="#rational-decomposition-note">rational decomposition</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>x.numerator<br>
+x.denominator</td>
+
+</tr><tr><td><a name="complex-construction" id="complex-construction"></a><a href="#complex-constructionnote">complex construction</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: peru">z</span> = 1 + 1.414j</td>
+
+</tr><tr><td><a name="complex-decomposition" id="complex-decomposition"></a><a href="#complex-decomposition-note">complex decomposition</a><br><span style="color: gray"><em>real and imaginary component, argument, absolute value, conjugate</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: purple">import</span> cmath<br><br>
+z.real<br>
+z.imag<br>
+cmath.phase(z)<br>
+abs(z)<br>
+z.conjugate()</td>
+
+</tr><tr><td><a name="random-num" id="random-num"></a><a href="#random-num-note">random number</a><br><span style="color: gray"><em>uniform integer, uniform float, normal float</em></span></td>
+<td>Math.floor(Math.random() * 100)<br>
+Math.random()<br><span style="color: gray"><em>none</em></span></td>
+<td>rand(0,99)<br>
+lcg_value()<br><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: purple">import</span> random<br><br>
+random.randint(0, 99)<br>
+random.random()<br>
+random.gauss(0, 1)</td>
+
+</tr><tr><td><a name="random-seed" id="random-seed"></a><a href="#random-seed-note">random seed</a><br><span style="color: gray"><em>set, get, restore</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>srand(17);<br><br><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: purple">import</span> random<br><br>
+random.seed(17)<br><span style="color: peru">seed</span> = random.getstate()<br>
+random.setstate(seed)</td>
+
+</tr><tr><td><a name="bit-op" id="bit-op"></a><a href="#bit-op-note">bit operators</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="white-space: pre-wrap;">&lt;&lt; &gt;&gt; &amp; | ^ ~</span></td>
+<td><span style="white-space: pre-wrap;">&lt;&lt; &gt;&gt; &amp; | ^ ~</span></td>
+<td><span style="white-space: pre-wrap;">&lt;&lt; &gt;&gt; &amp; | ^ ~</span></td>
+
+</tr><tr><td><a name="binary-octal-hex-literals" id="binary-octal-hex-literals"></a><a href="#binary-octal-hex-literals-note">binary, octal, and hex literals</a></td>
+<td><span style="color: gray"><em>none</em></span><br>
+052 <span style="color: gray"><span style="white-space: pre-wrap;">//</span> deprecated</span><br>
+0x2a</td>
+<td>0b101010<br>
+052<br>
+0x2a</td>
+<td>0b101010<br>
+052<br>
+0x2a</td>
+
+</tr><tr><td><a name="radix" id="radix"></a><a href="#radix-note">radix</a><br><span style="color: gray"><em>convert integer to and from string with radix</em></span></td>
+<td>(42).toString(7)<br><span style="color: gray"><em>??</em></span></td>
+<td>base_convert(<span style="color: maroon">"42"</span>, 10, 7);<br>
+base_convert(<span style="color: maroon">"60"</span>, 7, 10);</td>
+<td><span style="color: gray"><em>none</em></span><br>
+int(<span style="color: maroon">"60"</span>, 7)</td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="strings" id="strings"></a><a href="#strings-note">strings</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="str-type" id="str-type"></a><a href="#str-type-note">string type</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>String</td>
+<td>string</td>
+<td>str</td>
+
+</tr><tr><td><a name="str-literal" id="str-literal"></a><a href="#str-literal-note">string literal</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>"don't say \"no\""<br>
+'don\'t say "no"'</td>
+<td><span style="color: maroon">"don't say \"no\""</span><br><span style="color: maroon">'don\'t say "no"'</span></td>
+<td><span style="color: maroon">'don\'t say "no"'</span><br><span style="color: maroon">"don't say \"no\""</span><br><span style="color: maroon">"don't "</span> <span style="color: maroon">'say "no"'</span><br><span style="color: maroon">'''don't say "no"'''</span><br><span style="color: maroon">"""don't say "no\""""</span></td>
+
+</tr><tr><td><a name="newline-in-str-literal" id="newline-in-str-literal"></a><a href="#newline-in-str-literal-note">newline in literal</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>yes</em></span></td>
+<td><span style="color: maroon">'first line<br>
+second line'<br><br>
+"first line<br>
+second line"</span></td>
+<td><span style="color: gray"><em>triple quote literals only:</em></span><br><span style="color: maroon">'''first line<br>
+second line'''<br><br>
+"""first line<br>
+second line"""</span></td>
+
+</tr><tr><td><a name="str-literal-esc" id="str-literal-esc"></a><a href="#str-literal-esc-note">literal escapes</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>single and double quotes:</em></span><br>
+\b \f \n \r \t \v \uhhhh \xhh \" \' \\</td>
+<td><span style="color: gray"><em>double quoted:</em></span><br>
+\f \n \r \t \v \x<span style="color: gray"><em>hh</em></span> \$ \" \\ \<span style="color: gray"><em>ooo</em></span><br><br><span style="color: gray"><em>single quoted:</em></span><br>
+\' \\</td>
+<td><span style="color: gray"><em>single and double quoted:</em></span><br>
+\<span style="color: gray"><em>newline</em></span> \\ \' \" \a \b \f \n \r \t \v \<span style="color: gray"><em>ooo</em></span> \x<span style="color: gray"><em>hh</em></span><br><br><span style="color: gray"><em>Python 3:</em></span><br>
+\u<span style="color: gray"><em>hhhh</em></span> \U<span style="color: gray"><em>hhhhhhhh</em></span></td>
+
+</tr><tr><td><a name="here-doc" id="here-doc"></a><a href="#here-doc-note">here document</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$<span style="color: peru">word</span> = <span style="color: maroon">"amet"</span>;<br><br>
+$<span style="color: peru">s</span> = <span style="color: maroon"><span style="white-space: pre-wrap;">&lt;&lt;&lt;</span>EOF<br>
+lorem ipsum<br>
+dolor sit $word<br>
+EOF</span>;</td>
+<td><span style="color: gray"><em>none</em></span></td>
+
+</tr><tr><td><a name="var-interpolation" id="var-interpolation"></a><a href="#var-interpolation-note">variable interpolation</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><span style="white-space: pre-wrap;">//</span> None; use string concatenation.<br><span style="white-space: pre-wrap;">//</span> Both of these expressions are '11':</span><br>
+1 + "1"<br>
+"1" + 1</td>
+<td>$<span style="color: peru">count</span> = 3;<br>
+$<span style="color: peru">item</span> = <span style="color: maroon">"ball"</span>;<br><span style="color: purple">echo</span> <span style="color: maroon">"$count ${item}s\n"</span>;</td>
+<td><span style="color: peru">count</span> = 3<br><span style="color: peru">item</span> = <span style="color: maroon">'ball'</span><br><span style="color: purple">print</span>(<span style="color: maroon">'{count} {item}s'</span>.format(<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">**</span><span style="color: purple">locals</span>()))</td>
+
+</tr><tr><td><a name="expr-interpolation" id="expr-interpolation"></a><a href="#expr-interpolation-note">expression interpolation</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: maroon">'1 + 1 = {}'</span>.format(1 + 1)</td>
+
+</tr><tr><td><a name="format" id="format"></a><a href="#format-note">format</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><span style="white-space: pre-wrap;">//</span> None; use string concatenation.<br><span style="white-space: pre-wrap;">//</span> Evaluates to "12.35":</span><br>
+12.3456.toFixed(2)</td>
+<td>$<span style="color: peru">fmt</span> = <span style="color: maroon">"lorem %s %d %f"</span>;<br>
+sprintf($<span style="color: peru">fmt</span>, <span style="color: maroon">"ipsum"</span>, 13, 3.7);</td>
+<td><span style="color: maroon">'lorem %s %d %f'</span> % (<span style="color: maroon">'ipsum'</span>, 13, 3.7)<br><br><span style="color: peru">fmt</span> = <span style="color: maroon">'lorem {0} {1} {2}'</span><br>
+fmt.format(<span style="color: maroon">'ipsum'</span>, 13, 3.7)</td>
+
+</tr><tr><td><a name="mutable-str" id="mutable-str"></a><a href="#mutable-str-note">are strings mutable?</a></td>
+<td><span style="color: gray"><em>no</em></span></td>
+<td>$<span style="color: peru">s</span> = <span style="color: maroon">"bar"</span>;<br>
+$<span style="color: peru">s2</span> = $<span style="color: peru">s</span>;<br><span style="color: gray"># sets s to "baz"; s2 is unchanged:</span><br>
+$<span style="color: peru">s</span>[2] = <span style="color: maroon">"z"</span>;</td>
+<td><span style="color: gray"><em>no</em></span></td>
+
+</tr><tr><td><a name="copy-str" id="copy-str"></a><a href="#copy-str-note">copy string</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$<span style="color: peru">s2</span> = $<span style="color: peru">s</span>;</td>
+<td><span style="color: gray"><em>none</em></span></td>
+
+</tr><tr><td><a name="str-concat" id="str-concat"></a><a href="#str-concat-note">concatenate</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>s = "Hello, " + "World!";</td>
+<td>$<span style="color: peru">s</span> = <span style="color: maroon">"Hello, "</span>;<br>
+$<span style="color: peru">s2</span> = $<span style="color: peru">s</span> . <span style="color: maroon">"World!"</span>;</td>
+<td><span style="color: peru">s</span> = <span style="color: maroon">'Hello, '</span><br><span style="color: peru">s2</span> = s + <span style="color: maroon">'World!'</span><br><br><span style="color: gray"># juxtaposition can be used to<br>
+# concatenate literals:</span><br><span style="color: peru">s2</span> = <span style="color: maroon">'Hello, ' "World!"</span></td>
+
+</tr><tr><td><a name="str-replicate" id="str-replicate"></a><a href="#str-replicate-note">replicate</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>var hbar = Array(80).join("-");</td>
+<td>$<span style="color: peru">hbar</span> = str_repeat(<span style="color: maroon">"-"</span>, 80);</td>
+<td><span style="color: peru">hbar</span> = <span style="color: maroon">'-'</span> * 80</td>
+
+</tr><tr><td><a name="translate-case" id="translate-case"></a><a href="#translate-case-note">translate case</a><br><span style="color: gray"><em>to upper, to lower</em></span></td>
+<td>"lorem".toUpperCase()<br>
+"LOREM".toLowerCase()</td>
+<td>strtoupper(<span style="color: maroon">"lorem"</span>)<br>
+strtolower(<span style="color: maroon">"LOREM"</span>)</td>
+<td><span style="color: maroon">'lorem'</span>.upper()<br><span style="color: maroon">'LOREM'</span>.lower()</td>
+
+</tr><tr><td><a name="capitalize" id="capitalize"></a><a href="#capitalize-note">capitalize</a><br><span style="color: gray"><em>string, words</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>ucfirst(<span style="color: maroon">"lorem"</span>)<br>
+ucwords(<span style="color: maroon">"lorem ipsum"</span>)</td>
+<td><span style="color: purple">import</span> string<br><br><span style="color: maroon">'lorem'</span>.capitalize()<br>
+string.capwords(<span style="color: maroon">'lorem ipsum'</span>)</td>
+
+</tr><tr><td><a name="trim" id="trim"></a><a href="#trim-note">trim</a><br><span style="color: gray"><em>both sides, left, right</em></span></td>
+<td>" lorem ".trim()<br><span style="color: gray"># some browsers:</span><br>
+" lorem".trimLeft()<br>
+"lorem ".trimRight()</td>
+<td>trim(<span style="color: maroon">" lorem "</span>)<br>
+ltrim(<span style="color: maroon">" lorem"</span>)<br>
+rtrim(<span style="color: maroon">"lorem "</span>)</td>
+<td><span style="color: maroon">' lorem '</span>.strip()<br><span style="color: maroon">' lorem'</span>.lstrip()<br><span style="color: maroon">'lorem '</span>.rstrip()</td>
+
+</tr><tr><td><a name="pad" id="pad"></a><a href="#pad-note">pad</a><br><span style="color: gray"><em>on right, on left, centered</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>str_pad(<span style="color: maroon">"lorem"</span>, 10)<br>
+str_pad(<span style="color: maroon">"lorem"</span>, 10, <span style="color: maroon">" "</span>, <span style="color: teal">STR_PAD_LEFT</span>)<br>
+str_pad(<span style="color: maroon">"lorem"</span>, 10, <span style="color: maroon">" "</span>, <span style="color: teal">STR_PAD_BOTH</span>)</td>
+<td><span style="color: maroon">'lorem'</span>.ljust(10)<br><span style="color: maroon">'lorem'</span>.rjust(10)<br><span style="color: maroon">'lorem'</span>.center(10)</td>
+
+</tr><tr><td><a name="num-to-str" id="num-to-str"></a><a href="#num-to-str-note">number to string</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>"value: " + 8</td>
+<td><span style="color: maroon">"value: "</span> . 8</td>
+<td><span style="color: maroon">'value: '</span> + <span style="color: purple">str</span>(8)</td>
+
+</tr><tr><td><a name="str-to-num" id="str-to-num"></a><a href="#str-to-num-note">string to number</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>7 + parseInt("12", 10)<br>
+73.9 + parseFloat(".037")</td>
+<td>7 + <span style="color: maroon">"12"</span><br>
+73.9 + <span style="color: maroon">".037"</span></td>
+<td>7 + <span style="color: purple">int</span>(<span style="color: maroon">'12'</span>)<br>
+73.9 + <span style="color: purple">float</span>(<span style="color: maroon">'.037'</span>)</td>
+
+</tr><tr><td><a name="join" id="join"></a><a href="#join-note">join</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>["do", "re", "mi"].join(" ")</td>
+<td>$<span style="color: peru">a</span> = [<span style="color: maroon">"do"</span>, <span style="color: maroon">"re"</span>, <span style="color: maroon">"mi"</span>, <span style="color: maroon">"fa"</span>];<br>
+implode(<span style="color: maroon">" "</span>, $<span style="color: peru">a</span>)</td>
+<td><span style="color: maroon">' '</span>.join([<span style="color: maroon">'do'</span>, <span style="color: maroon">'re'</span>, <span style="color: maroon">'mi'</span>, <span style="color: maroon">'fa'</span>])<br><br><span style="color: gray"># raises TypeError:</span><br><span style="color: maroon">' '</span>.join([1, 2, 3])</td>
+
+</tr><tr><td><a name="split" id="split"></a><a href="#split-note">split</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>"do re mi".split(" ")</td>
+<td>explode(<span style="color: maroon">" "</span>, <span style="color: maroon">"do re mi fa"</span>)</td>
+<td><span style="color: maroon">'do re mi fa'</span>.split()</td>
+
+</tr><tr><td><a name="split-in-two" id="split-in-two"></a><a href="#split-in-two-note">split in two</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>preg_split(<span style="color: maroon">'/\s+/'</span>, <span style="color: maroon">"do re mi fa"</span>, 2)</td>
+<td><span style="color: maroon">'do re mi fa'</span>.split(<span style="color: purple">None</span>, 1)</td>
+
+</tr><tr><td><a name="split-keep-delimiters" id="split-keep-delimiters"></a><a href="#split-keep-delimiters-note">split and keep delimiters</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>preg_split(<span style="color: maroon">'/(\s+)/'</span>, <span style="color: maroon">"do re mi fa"</span>,<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: teal">NULL</span>, <span style="color: teal">PREG_SPLIT_DELIM_CAPTURE</span>)</td>
+<td>re.split(<span style="color: maroon">'(\s+)'</span>, <span style="color: maroon">'do re mi fa'</span>)</td>
+
+</tr><tr><td><a name="str-length" id="str-length"></a><a href="#str-length-note">length</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>"lorem".length</td>
+<td>strlen(<span style="color: maroon">"lorem"</span>)</td>
+<td><span style="color: purple">len</span>(<span style="color: maroon">'lorem'</span>)</td>
+
+</tr><tr><td><a name="index-substr" id="index-substr"></a><a href="#index-substr-note">index of substring</a><br><span style="color: gray"><em>first, last</em></span></td>
+<td>"lorem ipsum".indexOf("ipsum")</td>
+<td><span style="color: gray"># returns FALSE if not found:</span><br>
+strpos(<span style="color: maroon">"do re re"</span>, <span style="color: maroon">"re"</span>)<br>
+strrpos(<span style="color: maroon">"do re re"</span>, <span style="color: maroon">"re"</span>)</td>
+<td><span style="color: gray"># raises ValueError if not found:</span><br><span style="color: maroon">'do re re'</span>.index(<span style="color: maroon">'re'</span>)<br><span style="color: maroon">'do re re'</span>.rindex(<span style="color: maroon">'re'</span>)<br><br><span style="color: gray"># returns -1 if not found:</span><br><span style="color: maroon">'do re re'</span>.find(<span style="color: maroon">'re'</span>)<br><span style="color: maroon">'do re re'</span>.rfind(<span style="color: maroon">'re'</span>)</td>
+
+</tr><tr><td><a name="extract-substr" id="extract-substr"></a><a href="#extract-substr-note">extract substring</a><br><span style="color: gray"><em>by start and length, by start and end, by successive starts</em></span></td>
+<td>"lorem ipsum".substr(6, 5)<br>
+"lorem ipsum".substring(6, 11)</td>
+<td>substr(<span style="color: maroon">"lorem ipsum"</span>, 6, 5)<br><span style="color: gray"><em>none</em></span><br><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span><br><span style="color: gray"><em>none</em></span><br><span style="color: maroon">'lorem ipsum'</span>[6:11]</td>
+
+</tr><tr><td><a name="extract-char" id="extract-char"></a><a href="#extract-char-note">extract character</a></td>
+<td>"lorem ipsum"[6]</td>
+<td><span style="color: gray"># syntax error to use index notation<br>
+# directly on string literal:</span><br>
+$<span style="color: peru">s</span> = <span style="color: maroon">"lorem ipsum"</span>;<br>
+$<span style="color: peru">s</span>[6];</td>
+<td><span style="color: maroon">'lorem ipsum'</span>[6]</td>
+
+</tr><tr><td><a name="chr-ord" id="chr-ord"></a><a href="#chr-ord-note">chr and ord</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>String.fromCharCode(65)<br>
+"A".charCodeAt(0)</td>
+<td>chr(65)<br>
+ord(<span style="color: maroon">"A"</span>)</td>
+<td><span style="color: purple">chr</span>(65)<br><span style="color: purple">ord</span>(<span style="color: maroon">'A'</span>)</td>
+
+</tr><tr><td><a name="str-to-char-array" id="str-to-char-array"></a><a href="#str-to-char-array-note">to array of characters</a></td>
+<td>"abcd".split("")</td>
+<td>str_split(<span style="color: maroon">"abcd"</span>)</td>
+<td><span style="color: purple">list</span>(<span style="color: maroon">'abcd'</span>)</td>
+
+</tr><tr><td><a name="translate-char" id="translate-char"></a><a href="#translate-char-note">translate characters</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$<span style="color: peru">ins</span> = implode(range(<span style="color: maroon">"a"</span>, <span style="color: maroon">"z"</span>));<br>
+$<span style="color: peru">outs</span> = substr($<span style="color: peru">ins</span>, 13, 13) .<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>substr($<span style="color: peru">ins</span>, 0, 13);<br>
+strtr(<span style="color: maroon">"hello"</span>, $<span style="color: peru">ins</span>, $<span style="color: peru">outs</span>)</td>
+<td><span style="color: purple">from</span> string <span style="color: purple">import</span> lowercase <span style="color: purple">as</span> ins<br><span style="color: purple">from</span> string <span style="color: purple">import</span> maketrans<br><br><span style="color: peru">outs</span> = ins[13:] + ins[:13]<br><span style="color: maroon">'hello'</span>.translate(maketrans(ins,outs))</td>
+
+</tr><tr><td><a name="delete-char" id="delete-char"></a><a href="#delete-char-note">delete characters</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$<span style="color: peru">vowels</span> = str_split(<span style="color: maroon">"aeiou"</span>);<br>
+$<span style="color: peru">s</span> = <span style="color: maroon">"disemvowel me"</span>;<br>
+$<span style="color: peru">s</span> = str_replace($<span style="color: peru">vowels</span>, <span style="color: maroon">""</span>, $<span style="color: peru">s</span>);</td>
+<td><span style="color: maroon">"disemvowel me"</span>.translate(<span style="color: teal">None</span>, <span style="color: maroon">"aeiou"</span>)</td>
+
+</tr><tr><td><a name="squeeze-char" id="squeeze-char"></a><a href="#squeeze-char-note">squeeze characters</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$<span style="color: peru">s</span> = <span style="color: maroon">"too<span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>much<span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>space"</span>;<br>
+$<span style="color: peru">s</span> = = preg_replace(<span style="color: maroon">'/(\s)+/'</span>, <span style="color: maroon">'\1'</span>, $<span style="color: peru">s</span>);</td>
+<td>re.sub(<span style="color: maroon">'(\s)+'</span>, r<span style="color: maroon">'\1'</span>, <span style="color: maroon">'too<span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>much<span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>space'</span>)</td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="regexes" id="regexes"></a><a href="#regexes-note">regular expressions</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="regex-literal" id="regex-literal"></a><a href="#regex-literal-note">literal, custom delimited literal</a></td>
+<td>/lorem|ipsum/</td>
+<td><span style="color: maroon">'/lorem|ipsum/'</span><br><span style="color: maroon">'(/etc/hosts)'</span></td>
+<td>re.compile(<span style="color: maroon">'lorem|ipsum'</span>)<br><span style="color: gray"><em>none</em></span></td>
+
+</tr><tr><td><a name="char-class-abbrev" id="char-class-abbrev"></a><a href="#char-class-abbrev-note">character class abbreviations</a></td>
+<td>. \d \D \s \S \w \W</td>
+<td>. \d \D \h \H \s \S \v \V \w \W</td>
+<td>. \d \D \s \S \w \W</td>
+
+</tr><tr><td><a name="regex-anchors" id="regex-anchors"></a><a href="#regex-anchors-note">anchors</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>^ $ \b \B</td>
+<td>^ $ \A \b \B \z \Z</td>
+<td>^ $ \A \b \B \Z</td>
+
+</tr><tr><td><a name="regex-test" id="regex-test"></a><a href="#regex-test-note">match test</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>if (s.match(/1999/)) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert("party!");<br>
+}</td>
+<td>if (preg_match(<span style="color: maroon">'/1999/'</span>, $<span style="color: peru">s</span>)) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>echo <span style="color: maroon">"party!\n"</span>;<br>
+}</td>
+<td><span style="color: purple">if</span> re.search(<span style="color: maroon">'1999'</span>, s):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: maroon">'party!'</span>)</td>
+
+</tr><tr><td><a name="case-insensitive-regex" id="case-insensitive-regex"></a><a href="#case-insensitive-regex-note">case insensitive match test</a></td>
+<td>"Lorem".match(/lorem/i)</td>
+<td>preg_match(<span style="color: maroon">'/lorem/i'</span>, <span style="color: maroon">"Lorem"</span>)</td>
+<td>re.search(<span style="color: maroon">'lorem'</span>, <span style="color: maroon">'Lorem'</span>, re.I)</td>
+
+</tr><tr><td><a name="regex-modifiers" id="regex-modifiers"></a><a href="#regex-modifiers-note">modifiers</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>g i m</td>
+<td>e i m s x</td>
+<td>re.I re.M re.S re.X</td>
+
+</tr><tr><td><a name="subst" id="subst"></a><a href="#subst-note">substitution</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>s = "do re mi mi mi";<br>
+s.replace(/mi/g, "ma");</td>
+<td>$<span style="color: peru">s</span> = <span style="color: maroon">"do re mi mi mi"</span>;<br>
+$<span style="color: peru">s</span> = preg_replace(<span style="color: maroon">'/mi/'</span>, <span style="color: maroon">"ma"</span>, $<span style="color: peru">s</span>);</td>
+<td><span style="color: peru">s</span> = <span style="color: maroon">'do re mi mi mi'</span><br><span style="color: peru">s</span> = re.compile(<span style="color: maroon">'mi'</span>).sub(<span style="color: maroon">'ma'</span>, s)</td>
+
+</tr><tr><td><a name="match-prematch-postmatch" id="match-prematch-postmatch"></a><a href="#match-prematch-postmatch-note">match, prematch, postmatch</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: per">m</span> = /\d{4}/.exec(s);<br>
+if (m) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>match = m[0];<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: gray"># no prematch or postmatch</span><br>
+}</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: peru">m</span> = re.search(<span style="color: maroon">'\d{4}'</span>, s)<br><span style="color: purple">if</span> m:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>match = m.group()<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>prematch = s[0:m.start(0)]<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>postmatch = s[m.end(0):<span style="color: purple">len</span>(s)]</td>
+
+</tr><tr><td><a name="group-capture" id="group-capture"></a><a href="#group-capture-note">group capture</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>rx = /^(\d{4})-(\d{2})-(\d{2})$/;<br>
+m = rx.exec('2009-06-03');<br>
+yr = m[1];<br>
+mo = m[2];<br>
+dy = m[3];</td>
+<td>$<span style="color: peru">s</span> = <span style="color: maroon">"2010-06-03"</span>;<br>
+$<span style="color: peru">rx</span> = <span style="color: maroon">'/(\d{4})-(\d{2})-(\d{2})/'</span>;<br>
+preg_match($<span style="color: peru">rx</span>, $<span style="color: peru">s</span>, $<span style="color: peru">m</span>);<br>
+list($_, $<span style="color: peru">yr</span>, $<span style="color: peru">mo</span>, $<span style="color: peru">dy</span>) = $<span style="color: peru">m</span>;</td>
+<td><span style="color: peru">rx</span> = <span style="color: maroon">'(\d{4})-(\d{2})-(\d{2})'</span><br><span style="color: peru">m</span> = re.search(rx, <span style="color: maroon">'2010-06-03'</span>)<br><span style="color: peru">yr</span>, <span style="color: peru">mo</span>, <span style="color: peru">dy</span> = m.groups()</td>
+
+</tr><tr><td><a name="named-grouped-capture" id="named-grouped-capture"></a><a href="#named-group-capture-note">named group capture</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$<span style="color: peru">s</span> = <span style="color: maroon">"foo.txt"</span>;<br>
+$<span style="color: peru">rx</span> = <span style="color: maroon">'/^(?P&lt;file&gt;.+)\.(?P&lt;suffix&gt;.+)$/'</span>;<br>
+preg_match($<span style="color: peru">rx</span>, $<span style="color: peru">s</span>, $<span style="color: peru">m</span>);<br><br>
+$<span style="color: peru">m</span>[<span style="color: maroon">"file"</span>]<br>
+$<span style="color: peru">m</span>[<span style="color: maroon">"suffix"</span>]</td>
+<td><span style="color: peru">rx</span> = <span style="color: maroon">'^(?P&lt;file&gt;.+)\.(?P&lt;suffix&gt;.+)$'</span><br><span style="color: peru">m</span> = re.search(rx, <span style="color: maroon">''foo.txt'</span>)<br><br>
+m.groupdict()[<span style="color: maroon">'file'</span>]<br>
+m.groupdict()[<span style="color: maroon">'suffix'</span>]</td>
+
+</tr><tr><td><a name="scan" id="scan"></a><a href="#scan-note">scan</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>var a = "dolor sit amet".match(/\w+/g);</td>
+<td>$<span style="color: peru">s</span> = <span style="color: maroon">"dolor sit amet"</span>;<br>
+preg_match_all(<span style="color: maroon">'/\w+/'</span>, $<span style="color: peru">s</span>, $<span style="color: peru">m</span>);<br>
+$<span style="color: peru">a</span> = $<span style="color: peru">m</span>[0];</td>
+<td><span style="color: peru">s</span> = <span style="color: maroon">'dolor sit amet'</span><br><span style="color: peru">a</span> = re.findall(<span style="color: maroon">'\w+'</span>, s)</td>
+
+</tr><tr><td><a name="backreference" id="backreference"></a><a href="#backreference-note">backreference in match and substitution</a></td>
+<td>/(\w+) \1/.exec("do do")<br><br>
+"do re".replace(/(\w+) (\w+)/, '$2 $1')</td>
+<td>preg_match(<span style="color: maroon">'/(\w+) \1/'</span>, <span style="color: maroon">"do do"</span>)<br><br>
+$<span style="color: peru">s</span> = <span style="color: maroon">"do re"</span>;<br>
+$<span style="color: peru">rx</span> = <span style="color: maroon">'/(\w+) (\w+)/'</span>;<br>
+$<span style="color: peru">s</span> = preg_replace($<span style="color: peru">rx</span>, <span style="color: maroon">'\2 \1'</span>, $<span style="color: peru">s</span>);</td>
+<td><span style="color: gray"><em>none</em></span><br><br><span style="color: peru">rx</span> = re.compile(<span style="color: maroon">'(\w+) (\w+)'</span>)<br>
+rx.sub(r<span style="color: maroon">'\2 \1'</span>, <span style="color: maroon">'do re'</span>)</td>
+
+</tr><tr><td><a name="recursive-regex" id="recursive-regex"></a><a href="#recursive-regex-note">recursive regex</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: maroon">'/\(([^()]*|($R))\)/'</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="dates-time" id="dates-time"></a><a href="#dates-time-note">dates and time</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="date-time-type" id="date-time-type"></a><a href="#date-time-type-note">date/time type</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>Date</td>
+<td><span style="color: green">DateTime</span></td>
+<td>datetime.datetime</td>
+
+</tr><tr><td><a name="current-date-time" id="current-date-time"></a><a href="#current-date-time-note">current date/time</a></td>
+<td>var t = new Date();</td>
+<td>$<span style="color: peru">t</span> = <span style="color: purple">new</span> <span style="color: green">DateTime</span>(<span style="color: maroon">"now"</span>);<br>
+$<span style="color: peru">utc_tmz</span> = <span style="color: purple">new</span> <span style="color: green">DateTimeZone</span>(<span style="color: maroon">"UTC"</span>);<br>
+$<span style="color: peru">utc</span> = <span style="color: purple">new</span> <span style="color: green">DateTime</span>(<span style="color: maroon">"now"</span>, $<span style="color: peru">utc_tmz</span>);</td>
+<td><span style="color: purple">import</span> datetime<br><br><span style="color: peru">t</span> = datetime.datetime.now()<br><span style="color: peru">utc</span> = datetime.datetime.utcnow()</td>
+
+</tr><tr><td><a name="unix-epoch" id="unix-epoch"></a><a href="#unix-epoch-note">to unix epoch, from unix epoch</a></td>
+<td>Math.round(t.getTime() / 1000)<br>
+var epoch = 1315716177;<br>
+var t2 = new Date(epoch * 1000);</td>
+<td>$<span style="color: peru">epoch</span> = $<span style="color: peru">t</span>-&gt;getTimestamp();<br>
+$<span style="color: peru">t2</span> = <span style="color: purple">new</span> <span style="color: green">DateTime</span>();<br>
+$<span style="color: peru">t2</span>-&gt;setTimestamp(1304442000);</td>
+<td><span style="color: purple">from</span> datetime <span style="color: purple">import</span> datetime <span style="color: purple">as</span> dt<br><br><span style="color: peru">epoch</span> = <span style="color: purple">int</span>(t.strftime(<span style="color: maroon">"%s"</span>))<br><span style="color: peru">t2</span> = dt.fromtimestamp(1304442000)</td>
+
+</tr><tr><td><a name="current-unix-epoch" id="current-unix-epoch"></a><a href="#current-unix-epoch-note">current unix epoch</a></td>
+<td>(new Date()).getTime() / 1000</td>
+<td>$<span style="color: peru">epoch</span> = time();</td>
+<td><span style="color: purple">import</span> datetime<br><br><span style="color: peru">t</span> = datetime.datetime.now()<br><span style="color: peru">epoch</span> = <span style="color: purple">int</span>(t.strftime(<span style="color: maroon">"%s"</span>))</td>
+
+</tr><tr><td><a name="strftime" id="strftime"></a><a href="#strftime-note">strftime</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>strftime(<span style="color: maroon">"%Y-%m-%d %H:%M:%S"</span>, $<span style="color: peru">epoch</span>);<br>
+date(<span style="color: maroon">"Y-m-d H:i:s"</span>, $<span style="color: peru">epoch</span>);<br>
+$<span style="color: peru">t</span>-&gt;format(<span style="color: maroon">"Y-m-d H:i:s"</span>);</td>
+<td>t.strftime(<span style="color: maroon">'%Y-%m-%d %H:%M:%S'</span>)</td>
+
+</tr><tr><td><a name="date-time-str" id="date-time-str"></a><a href="#date-time-str-note">default format example</a></td>
+<td><span style="color: gray">Tue Apr 01&nbsp;2014&nbsp;13:05:36 GMT-0700 (PDT)</span></td>
+<td><span style="color: gray"><em>no default string representation</em></span></td>
+<td><span style="color: gray">2011-08-23&nbsp;19:35:59.411135</span></td>
+
+</tr><tr><td><a name="strptime" id="strptime"></a><a href="#strptime-note">strptime</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$<span style="color: peru">fmt</span> = <span style="color: maroon">"Y-m-d H:i:s"</span>;<br>
+$<span style="color: peru">s</span> = <span style="color: maroon">"2011-05-03&nbsp;10:00:00"</span>;<br>
+$<span style="color: peru">t</span> = <span style="color: green">DateTime</span>::createFromFormat($<span style="color: peru">fmt</span>,<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">s</span>);</td>
+<td><span style="color: purple">from</span> datetime <span style="color: purple">import</span> datetime<br><br><span style="color: peru">s</span> = <span style="color: maroon">'2011-05-03&nbsp;10:00:00'</span><br><span style="color: peru">fmt</span> = <span style="color: maroon">'%Y-%m-%d %H:%M:%S'</span><br><span style="color: peru">t</span> = datetime.strptime(s, fmt)</td>
+
+</tr><tr><td><a name="parse-date" id="parse-date"></a><a href="#parse-date-note">parse date w/o format</a></td>
+<td>var t = new Date("July 7, 1999");</td>
+<td>$<span style="color: peru">epoch</span> = strtotime(<span style="color: maroon">"July 7, 1999"</span>);</td>
+<td><span style="color: gray"># pip install python-dateutil</span><br><span style="color: purple">import</span> dateutil.parser<br><br><span style="color: peru">s</span> = <span style="color: maroon">'July 7, 1999'</span><br><span style="color: peru">t</span> = dateutil.parser.parse(s)</td>
+
+</tr><tr><td><a name="get-date-parts" id="get-date-parts"></a><a href="#get-date-parts-note">get date parts</a></td>
+<td>t.getFullYear()<br>
+t.getMonth() + 1<br>
+t.getDate() <span style="color: gray"># getDay() is day of week</span></td>
+<td>(int)$t-&gt;format("Y")<br>
+(int)$t-&gt;format("m")<br>
+(int)$t-&gt;format("d")</td>
+<td>t.year<br>
+t.month<br>
+t.day</td>
+
+</tr><tr><td><a name="get-time-parts" id="get-time-parts"></a><a href="#get-time-parts-note">get time parts</a></td>
+<td>t.getHours()<br>
+t.getMinutes()<br>
+t.getSeconds()</td>
+<td>(int)$t-&gt;format("H")<br>
+(int)$t-&gt;format("i")<br>
+(int)$t-&gt;format("s")</td>
+<td>t.hour<br>
+t.minute<br>
+t.second</td>
+
+</tr><tr><td><a name="date-from-parts" id="date-from-parts"></a><a href="#date-from-parts-note">build date/time from parts</a></td>
+<td><span style="color: purple">var</span> <span style="color: peru">yr</span> = 1999;<br><span style="color: purple">var</span> <span style="color: peru">mo</span> = 9;<br><span style="color: purple">var</span> <span style="color: peru">dy</span> = 10;<br><span style="color: purple">var</span> <span style="color: peru">hr</span> = 23;<br><span style="color: purple">var</span> <span style="color: peru">mi</span> = 30;<br><span style="color: purple">var</span> <span style="color: peru">ss</span> = 0;<br><span style="color: purple">var</span> <span style="color: peru">t</span> = <span style="color: purple">new</span> <span style="color: green">Date</span>(yr,mo-1,dy,hr,mi,ss);</td>
+<td></td>
+<td>import datetime<br><br>
+yr = 1999<br>
+mo = 9<br>
+dy = 10<br>
+hr = 23<br>
+mi = 30<br>
+ss = 0<br>
+t = datetime.datetime(yr,mo,dy,hr,mi,ss)</td>
+
+</tr><tr><td><a name="date-subtraction" id="date-subtraction"></a><a href="#date-subtraction-note">result of date subtraction</a></td>
+<td><span style="color: gray">number <em>containing time difference in milliseconds</em></span></td>
+<td><span style="color: gray">DateInterval <em>object if</em> diff <em>method used:</em></span><br>
+$<span style="color: peru">fmt</span> = <span style="color: maroon">"Y-m-d H:i:s"</span>;<br>
+$<span style="color: peru">s</span> = <span style="color: maroon">"2011-05-03&nbsp;10:00:00"</span>;<br>
+$<span style="color: peru">then</span> = <span style="color: green">DateTime</span>::createFromFormat($<span style="color: peru">fmt</span>, $<span style="color: peru">s</span>);<br>
+$<span style="color: peru">now</span> = <span style="color: purple">new</span> <span style="color: green">DateTime</span>(<span style="color: maroon">"now"</span>);<br>
+$<span style="color: peru">interval</span> = $<span style="color: peru">now</span>-&gt;diff($<span style="color: peru">then</span>);</td>
+<td><span style="color: gray">datetime.timedelta <em>object</em></span><br><br><span style="color: gray"><em>use</em> total_seconds() <em>method to convert to float representing difference in seconds</em></span></td>
+
+</tr><tr><td><a name="add-time-duration" id="add-time-duration"></a><a href="#add-time-duration-note">add time duration</a></td>
+<td>var t1 = new Date();<br>
+var delta = (10 * 60 + 3) * 1000;<br>
+var t2 = new Date(t1.getTime() + delta);</td>
+<td>$<span style="color: peru">now</span> = <span style="color: purple">new</span> <span style="color: green">DateTime</span>(<span style="color: maroon">"now"</span>);<br>
+$<span style="color: peru">now</span>-&gt;add(<span style="color: purple">new</span> <span style="color: green">DateInterval</span>(<span style="color: maroon">"PT10M3S"</span>);</td>
+<td><span style="color: purple">import</span> datetime<br><br><span style="color: peru">delta</span> = datetime.timedelta(<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>minutes=10,<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>seconds=3)<br><span style="color: peru">t</span> = datetime.datetime.now() + delta</td>
+
+</tr><tr><td><a name="local-tmz" id="local-tmz"></a><a href="#local-tmz-note">local timezone</a></td>
+<td></td>
+<td><span style="color: gray"><em>DateTime objects can be instantiated without specifying the timezone if a default is set:</em></span><br>
+$<span style="color: peru">s</span> = <span style="color: maroon">"America/Los_Angeles"</span>;<br>
+date_default_timezone_set($<span style="color: peru">s</span>);</td>
+<td><span style="color: gray"><em>a</em> datetime <em>object has no timezone information unless a</em> tzinfo <em>object is provided when it is created</em></span></td>
+
+</tr><tr><td><a name="arbitrary-tmz" id="arbitrary-tmz"></a><a href="#arbitrary-tmz-note">arbitrary timezone</a></td>
+<td></td>
+<td></td>
+<td># pip install pytz<br>
+import pytz<br>
+import datetime<br><br>
+tmz = pytz.timezone('Asia/Tokyo')<br>
+utc = datetime.datetime.utcnow()<br>
+utc_dt = datetime.datetime(<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>*utc.timetuple()[0:5],<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>tzinfo=pytz.utc)<br>
+jp_dt = utc_dt.astimezone(tmz)</td>
+
+</tr><tr><td><a name="timezone-offset" id="timezone-offset"></a><a href="#timezone-offset-note">timezone name; offset from UTC; is daylight savings?</a></td>
+<td></td>
+<td>$<span style="color: peru">tmz</span> = date_timezone_get($<span style="color: peru">t</span>);<br>
+timezone_name_get($<span style="color: peru">tmz</span>);<br>
+date_offset_get($<span style="color: peru">t</span>) / 3600;<br>
+$<span style="color: peru">t</span>-&gt;format(<span style="color: maroon">"I"</span>);</td>
+<td><span style="color: purple">import</span> time<br><br><span style="color: peru">tm</span> = time.localtime()<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><br>
+time.tzname[tm.tm_isdst]<br>
+(time.timezone / -3600) + tm.tm_isdst<br>
+tm.tm_isdst</td>
+
+</tr><tr><td><a name="microseconds" id="microseconds"></a><a href="#microseconds-note">microseconds</a></td>
+<td></td>
+<td>list($<span style="color: peru">frac</span>, $<span style="color: peru">sec</span>) = explode(<span style="color: maroon">" "</span>,<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>microtime());<br>
+$<span style="color: peru">usec</span> = $<span style="color: peru">frac</span> * 1000 * 1000;</td>
+<td>t.microsecond</td>
+
+</tr><tr><td><a name="sleep" id="sleep"></a><a href="#sleep-note">sleep</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"># a float argument will be truncated<br>
+# to an integer:</span><br>
+sleep(1);</td>
+<td><span style="color: purple">import</span> time<br><br>
+time.sleep(0.5)</td>
+
+</tr><tr><td><a name="timeout" id="timeout"></a><a href="#timeout-note">timeout</a></td>
+<td></td>
+<td><span style="color: gray"><em>use</em> set_time_limit <em>to limit execution time of the entire script; use</em> stream_set_timeout <em>to limit time spent reading from a stream opened with</em> fopen <em>or</em> fsockopen</span></td>
+<td><span style="color: purple">import</span> signal, time<br><br><span style="color: purple">class</span> <span style="color: green">Timeout</span>(<span style="color: green">Exception</span>): <span style="color: purple">pass</span><br><br><span style="color: purple">def</span> <span style="color: mediumblue">timeout_handler</span>(signo, fm):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">raise</span> Timeout()<br><br>
+signal.signal(signal.SIGALRM,<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>timeout_handler)<br><br><span style="color: purple">try</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>signal.alarm(5)<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>time.sleep(10)<br><span style="color: purple">except</span> Timeout:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">pass</span><br>
+signal.alarm(0)</td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="arrays" id="arrays"></a><a href="#arrays-note">arrays</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="array-literal" id="array-literal"></a><a href="#array-literal-note">literal</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>a = [1, 2, 3, 4]</td>
+<td>$<span style="color: peru">a</span> = [1, 2, 3, 4];<br><br><span style="color: gray"># older syntax:</span><br>
+$<span style="color: peru">a</span> = array(1, 2, 3, 4);</td>
+<td><span style="color: peru">a</span> = [1, 2, 3, 4]</td>
+
+</tr><tr><td><a name="array-size" id="array-size"></a><a href="#array-size-note">size</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>a.length</td>
+<td>count($<span style="color: peru">a</span>)</td>
+<td><span style="color: purple">len</span>(a)</td>
+
+</tr><tr><td><a name="array-empty" id="array-empty"></a><a href="#array-empty-note">empty test</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><span style="white-space: pre-wrap;">//</span> TypeError if a is null or undefined:</span><br>
+a.length === 0</td>
+<td><span style="color: gray"># NULL tests as empty:</span><br>
+!$<span style="color: peru">a</span></td>
+<td><span style="color: gray"># None tests as empty:</span><br><span style="color: purple">not</span> a</td>
+
+</tr><tr><td><a name="array-lookup" id="array-lookup"></a><a href="#array-lookup-note">lookup</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>a[0]</td>
+<td>$<span style="color: peru">a</span>[0]<br><br><span style="color: gray"># PHP uses the same type for arrays and<br>
+# dictionaries; indices can be negative<br>
+# integers or strings</span></td>
+<td>a[0]<br><br><span style="color: gray"># returns last element:</span><br>
+a[-1]</td>
+
+</tr><tr><td><a name="array-update" id="array-update"></a><a href="#array-update-note">update</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>a[0] = "lorem"</td>
+<td>$<span style="color: peru">a</span>[0] = <span style="color: maroon">"lorem"</span>;</td>
+<td>a[0] = <span style="color: maroon">'lorem'</span></td>
+
+</tr><tr><td><a name="array-out-of-bounds" id="array-out-of-bounds"></a><a href="#array-out-of-bounds-note">out-of-bounds behavior</a></td>
+<td><span style="color: gray"><em>returns</em> undefined</span></td>
+<td>$<span style="color: peru">a</span> = [];<br><span style="color: gray"># evaluates as NULL:</span><br>
+$<span style="color: peru">a</span>[10];<br><span style="color: gray"># increases array size to one:</span><br>
+$<span style="color: peru">a</span>[10] = <span style="color: maroon">"lorem"</span>;</td>
+<td><span style="color: peru">a</span> = []<br><span style="color: gray"># raises IndexError:</span><br>
+a[10]<br><span style="color: gray"># raises IndexError:</span><br>
+a[10] = <span style="color: maroon">'lorem'</span></td>
+
+</tr><tr><td><a name="array-element-index" id="array-element-index"></a><a href="#array-element-index-note">index of element</a></td>
+<td>[6, 7, 7, 8].indexOf(7)<br>
+[6, 7, 7, 8].lastIndexOf(7)<br><span style="color: gray"><span style="white-space: pre-wrap;">//</span> returns -1 if not found</span></td>
+<td>$<span style="color: peru">a</span> = [<span style="color: maroon">"x"</span>, <span style="color: maroon">"y"</span>, <span style="color: maroon">"z"</span>, <span style="color: maroon">"w"</span>];<br>
+$<span style="color: peru">i</span> = array_search(<span style="color: maroon">"y"</span>, $<span style="color: peru">a</span>);</td>
+<td><span style="color: peru">a</span> = [<span style="color: maroon">'x'</span>, <span style="color: maroon">'y'</span>, <span style="color: maroon">'z'</span>, <span style="color: maroon">'w'</span>]<br><span style="color: peru">i</span> = a.index(<span style="color: maroon">'y'</span>)</td>
+
+</tr><tr><td><a name="array-slice" id="array-slice"></a><a href="#array-slice-note">slice</a><br><span style="color: gray"><em>by endpoints, by length</em></span><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>["a", "b", "c", "d"].slice(1,3)</td>
+<td><span style="color: gray"># select 3rd and 4th elements:</span><br><span style="color: gray"><em>none</em></span><br>
+array_slice($<span style="color: peru">a</span>, 2, 2)</td>
+<td><span style="color: gray"># select 3rd and 4th elements:</span><br>
+a[2:4]<br>
+a[<span style="white-space: pre-wrap;">2:2</span> + 2]</td>
+
+</tr><tr><td><a name="array-slice-to-end" id="array-slice-to-end"></a><a href="#array-slice-to-end-note">slice to end</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>["a", "b", "c", "d"].slice(1)</td>
+<td>array_slice($<span style="color: peru">a</span>, 1)</td>
+<td>a[1:]</td>
+
+</tr><tr><td><a name="array-back" id="array-back"></a><a href="#array-back-note">manipulate back</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>a = [6, 7, 8];<br>
+a.push(9);<br>
+i = a.pop();</td>
+<td>$<span style="color: peru">a</span> = [6, 7, 8];<br>
+array_push($<span style="color: peru">a</span>, 9);<br>
+$<span style="color: peru">a</span>[] = 9; <span style="color: gray"># same as array_push</span><br>
+array_pop($<span style="color: peru">a</span>);</td>
+<td><span style="color: peru">a</span> = [6, 7, 8]<br>
+a.append(9)<br>
+a.pop()</td>
+
+</tr><tr><td><a name="array-front" id="array-front"></a><a href="#array-front-note">manipulate front</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>a = [6, 7, 8];<br>
+a.unshift(5);<br>
+i = a.shift();</td>
+<td>$<span style="color: peru">a</span> = [6, 7, 8];<br>
+array_unshift($<span style="color: peru">a</span>, 5);<br>
+array_shift($<span style="color: peru">a</span>);</td>
+<td><span style="color: peru">a</span> = [6, 7, 8]<br>
+a.insert(0, 5)<br>
+a.pop(0)</td>
+
+</tr><tr><td><a name="array-concatenation" id="array-concatenation"></a><a href="#array-concatenation-note">concatenate</a></td>
+<td>a = [1, 2, 3].concat([4, 5, 6]);</td>
+<td>$<span style="color: peru">a</span> = [1, 2, 3];<br>
+$<span style="color: peru">a2</span> = array_merge($<span style="color: peru">a</span>, [4, 5, 6]);<br>
+$<span style="color: peru">a</span> = array_merge($<span style="color: peru">a</span>, [4, 5, 6]);</td>
+<td><span style="color: peru">a</span> = [1, 2, 3]<br><span style="color: peru">a2</span> = a + [4, 5, 6]<br>
+a.extend([4, 5, 6])</td>
+
+</tr><tr><td><a name="array-replication" id="array-replication"></a><a href="#array-replication-note">replicate</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td>a = [<span style="color: purple">None</span>] * 10<br>
+a = [<span style="color: purple">None for</span> i <span style="color: purple">in range</span>(0, 10)]</td>
+
+</tr><tr><td><a name="array-copy" id="array-copy"></a><a href="#array-copy-note">copy</a><br><span style="color: gray"><em>address copy, shallow copy, deep copy</em></span></td>
+<td>a = [1, 2, [3, 4]];<br>
+a2 = a;<br>
+a3 = a.slice(0);<br>
+a4 = JSON.parse(JSON.stringify(a));</td>
+<td>$<span style="color: peru">a</span> = [1, 2, [3, 4]];<br>
+$<span style="color: peru">a2</span> =&amp; $<span style="color: peru">a</span>;<br><span style="color: gray"><em>none</em></span><br>
+$<span style="color: peru">a4</span> = $<span style="color: peru">a</span>;</td>
+<td><span style="color: purple">import</span> copy<br><br><span style="color: peru">a</span> = [1,2,[3,4]]<br><span style="color: peru">a2</span> = a<br><span style="color: peru">a3</span> = <span style="color: purple">list</span>(a)<br><span style="color: peru">a4</span> = copy.deepcopy(a)</td>
+
+</tr><tr><td><a name="array-arguments" id="array-arguments"></a><a href="#array-arguments-note">arrays as function arguments</a></td>
+<td><span style="color: gray"><em>parameter contains address copy</em></span></td>
+<td><span style="color: gray"><em>parameter contains deep copy</em></span></td>
+<td><span style="color: gray"><em>parameter contains address copy</em></span></td>
+
+</tr><tr><td><a name="array-iterate" id="array-iterate"></a><a href="#array-iterate-note">iterate over elements</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>_.each([1, 2, 3], function(n) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert(n);<br>
+})</td>
+<td><span style="color: purple">foreach</span> ([1, 2, 3] <span style="color: purple">as</span> $<span style="color: peru">i</span>) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"$i\n"</span>;<br>
+}</td>
+<td><span style="color: purple">for</span> i <span style="color: purple">in</span> [1,2,3]:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(i)</td>
+
+</tr><tr><td><a name="indexed-array-iteration" id="indexed-array-iteration"></a><a href="#indexed-array-iteration-note">iterate over indices and elements</a></td>
+<td>var len = a.length;<br>
+for (var i = 0; i &lt; len; i++ ) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert(a[i]);<br>
+}</td>
+<td>$<span style="color: peru">a</span> = [<span style="color: maroon">"do"</span>, <span style="color: maroon">"re"</span>, <span style="color: maroon">"mi"</span> <span style="color: maroon">"fa"</span>];<br><span style="color: purple">foreach</span> ($<span style="color: peru">a</span> as $<span style="color: peru">i</span> =&gt; $<span style="color: peru">s</span>) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"$s at index $i\n"</span>;<br>
+}</td>
+<td><span style="color: peru">a</span> = [<span style="color: maroon">'do'</span>, <span style="color: maroon">'re'</span>, <span style="color: maroon">'mi'</span>, <span style="color: maroon">'fa'</span>]<br><span style="color: purple">for</span> i, s <span style="color: purple">in</span> enumerate(a):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: maroon">'%s at index %d'</span> % (s, i))</td>
+
+</tr><tr><td><a name="range-iteration" id="range-iteration"></a><a href="#range-iteration-note">iterate over range</a></td>
+<td><span style="color: gray"><em>not space efficient; use C-style for loop</em></span></td>
+<td><span style="color: gray"><em>not space efficient; use C-style for loop</em></span></td>
+<td><span style="color: gray"># use range() in Python 3:</span><br><span style="color: purple">for</span> i <span style="color: purple">in xrange</span>(1, 1000001):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: gray"><em>code</em></span></td>
+
+</tr><tr><td><a name="range-array" id="range-array"></a><a href="#range-array-note">instantiate range as array</a></td>
+<td>var a = _.range(1, 10);</td>
+<td>$<span style="color: peru">a</span> = range(1, 10);</td>
+<td><span style="color: peru">a</span> = <span style="color: purple">range</span>(1, 11)<br><span style="color: gray"><em>Python 3:</em></span><br><span style="color: peru">a</span> = <span style="color: purple">list</span>(<span style="color: purple">range</span>(1, 11))</td>
+
+</tr><tr><td><a name="array-reverse" id="array-reverse"></a><a href="#array-reverse-note">reverse</a><br><span style="color: gray"><em>non-destructive, in-place</em></span></td>
+<td>var a = [1, 2, 3];<br>
+a.reverse();</td>
+<td>$<span style="color: peru">a</span> = [1, 2, 3];<br><br>
+array_reverse($<span style="color: peru">a</span>);<br>
+$<span style="color: peru">a</span> = array_reverse($<span style="color: peru">a</span>);</td>
+<td><span style="color: peru">a</span> = [1, 2, 3]<br><br>
+a[::-1]<br>
+a.reverse()</td>
+
+</tr><tr><td><a name="array-sort" id="array-sort"></a><a href="#array-sort-note">sort</a><br><span style="color: gray"><em>non-destructive,<br>
+in-place,<br>
+custom comparision</em></span></td>
+<td>var a = [3, 1, 4, 2];<br>
+a.sort();</td>
+<td>$<span style="color: peru">a</span> = [<span style="color: maroon">"b"</span>, <span style="color: maroon">"A"</span>, <span style="color: maroon">"a"</span>, <span style="color: maroon">"B"</span>];<br><br><span style="color: gray"><em>none</em></span><br>
+sort($<span style="color: peru">a</span>);<br><span style="color: gray"><em>none, but</em> usort <em>sorts in place</em></span></td>
+<td><span style="color: peru">a</span> = [<span style="color: maroon">'b'</span>, <span style="color: maroon">'A'</span>, <span style="color: maroon">'a'</span>, <span style="color: maroon">'B'</span>]<br><br><span style="color: purple">sorted</span>(a)<br>
+a.sort()<br><span style="color: gray"># custom binary comparision<br>
+# removed from Python 3:</span><br>
+a.sort(key=<span style="color: purple">str</span>.lower)</td>
+
+</tr><tr><td><a name="array-dedupe" id="array-dedupe"></a><a href="#array-dedupe-note">dedupe</a><br><span style="color: gray"><em>non-destructive, in-place</em></span></td>
+<td>var a = [1, 2, 2, 3];<br><br>
+var a2 = _.uniq(a);<br>
+a = _.uniq(a);</td>
+<td>$<span style="color: peru">a</span> = [1, 2, 2, 3];<br><br>
+$<span style="color: peru">a2</span> = array_unique($<span style="color: peru">a</span>);<br>
+$<span style="color: peru">a</span> = array_unique($<span style="color: peru">a</span>);</td>
+<td><span style="color: peru">a</span> = [1, 2, 2, 3]<br><br><span style="color: peru">a2</span> = <span style="color: purple">list</span>(<span style="color: purple">set</span>(a))<br><span style="color: peru">a</span> = <span style="color: purple">list</span>(<span style="color: purple">set</span>(a))</td>
+
+</tr><tr><td><a name="membership" id="membership"></a><a href="#membership-note">membership</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>_.contains(a, 7)</td>
+<td>in_array(7, $<span style="color: peru">a</span>)</td>
+<td>7 <span style="color: purple">in</span> a</td>
+
+</tr><tr><td><a name="intersection" id="intersection"></a><a href="#intersection-note">intersection</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>_.intersection([1, 2], [2, 3, 4])</td>
+<td>$<span style="color: peru">a</span> = [1, 2];<br>
+$<span style="color: peru">b</span> = [2, 3, 4]<br>
+array_intersect($<span style="color: peru">a</span>, $<span style="color: peru">b</span>)</td>
+<td>{1,2} &amp; {2,3,4}</td>
+
+</tr><tr><td><a name="union" id="union"></a><a href="#union-note">union</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>_.union([1, 2], [2, 3, 4])</td>
+<td>$<span style="color: peru">a1</span> = [1, 2];<br>
+$<span style="color: peru">a2</span> = [2, 3, 4];<br>
+array_unique(array_merge($<span style="color: peru">a1</span>, $<span style="color: peru">a2</span>))</td>
+<td>{1,2} | {2,3,4}</td>
+
+</tr><tr><td><a name="set-diff" id="set-diff"></a><a href="#set-diff-note">relative complement, symmetric difference</a></td>
+<td>_.difference([1,2,3], [2])<br><span style="color: gray"><em>none</em></span></td>
+<td>$<span style="color: peru">a1</span> = [1, 2, 3];<br>
+$<span style="color: peru">a2</span> = [2];<br>
+array_values(array_diff($<span style="color: peru">a1</span>, $<span style="color: peru">a2</span>))<br><span style="color: gray"><em>none</em></span></td>
+<td>{1,2,3} - {2}<br>
+{1,2} ^ {2,3,4}</td>
+
+</tr><tr><td><a name="map" id="map"></a><a href="#map-note">map</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><span style="white-space: pre-wrap;">//</span> callback gets 3 args:<br><span style="white-space: pre-wrap;">//</span> value, index, array</span><br>
+a.map(function(x) { return x * x })</td>
+<td>array_map(function ($<span style="color: peru">x</span>) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> $<span style="color: peru">x</span> * $<span style="color: peru">x</span>;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>}, [1, 2, 3])</td>
+<td><span style="color: purple">map</span>(<span style="color: purple">lambda</span> x: x * x, [1,2,3])<br><span style="color: gray"># or use list comprehension:</span><br>
+[x * x for x in [1,2,3]]</td>
+
+</tr><tr><td><a name="filter" id="filter"></a><a href="#filter-note">filter</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>a.filter(function(x) { return x &gt; 1 })</td>
+<td>array_filter([1, 2, 3],<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>function ($<span style="color: peru">x</span>) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> $<span style="color: peru">x</span>&gt;1;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>})</td>
+<td><span style="color: purple">filter</span>(<span style="color: purple">lambda</span> x: x &gt; 1, [1,2,3])<br><span style="color: gray"># or use list comprehension:</span><br>
+[x for x in [1,2,3] if x &gt; 1]</td>
+
+</tr><tr><td><a name="reduce" id="reduce"></a><a href="#reduce-note">reduce</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>a.reduce(function(m, o) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>return m + o;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>}, 0)</td>
+<td>array_reduce([1, 2, 3],<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>function($<span style="color: peru">x</span>,$<span style="color: peru">y</span>) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> $<span style="color: peru">x</span> + $<span style="color: peru">y</span>;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>}, 0)</td>
+<td><span style="color: gray"># import needed in Python 3 only</span><br><span style="color: purple">from</span> functools <span style="color: purple">import reduce</span><br><br><span style="color: purple">reduce</span>(<span style="color: purple">lambda</span> x, y: x + y, [1, 2, 3], 0)</td>
+
+</tr><tr><td><a name="universal-existential-test" id="universal-existential-test"></a><a href="#universal-existential-test-note">universal and existential tests</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>var a = [1, 2, 3, 4];<br>
+var even = function(x) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>return x % 2 == 0;<br>
+};<br><br>
+a.every(even)<br>
+a.some(even)</td>
+<td><span style="color: gray"><em>use array_filter</em></span></td>
+<td><span style="color: purple">all</span>(i % 2 == 0 <span style="color: purple">for</span> i <span style="color: purple">in</span> [1,2,3,4])<br><span style="color: purple">any</span>(i % 2 == 0 <span style="color: purple">for</span> i <span style="color: purple">in</span> [1,2,3,4])</td>
+
+</tr><tr><td><a name="shuffle-sample" id="shuffle-sample"></a><a href="#shuffle-sample-note">shuffle and sample</a></td>
+<td>var a = [1, 2, 3, 4];<br>
+a = _.shuffle(a);<br>
+var samp = _.sample([1, 2, 3, 4], 2);</td>
+<td>$<span style="color: peru">a</span> = [1, 2, 3, 4];<br>
+shuffle($<span style="color: peru">a</span>);<br>
+$<span style="color: peru">samp</span> = array_rand(|[1, 2, 3, 4], 2);</td>
+<td><span style="color: purple">from</span> random <span style="color: purple">import</span> shuffle, sample<br><br><span style="color: peru">a</span> = [1, 2, 3, 4]<br>
+shuffle(a)<br>
+samp = sample([1, 2, 3, 4], 2)</td>
+
+</tr><tr><td><a name="flatten" id="flatten"></a><a href="#flatten-note">flatten</a><br><span style="color: gray"><em>one level, completely</em></span></td>
+<td>var a = [1, [2, [3, 4]]];<br>
+var a2 = _.flatten(a, true);<br>
+var a3 = _.flatten(a);</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+
+</tr><tr><td><a name="zip" id="zip"></a><a href="#zip-note">zip</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>var a = _.zip(<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>[1, 2, 3],<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>["a", "b", "c"]);</td>
+<td>$<span style="color: peru">a</span> = array_map(<span style="color: teal">NULL</span>,<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>[1, 2, 3],<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>[<span style="color: maroon">"a"</span>, <span style="color: maroon">"b"</span>, <span style="color: maroon">"c"</span>]);</td>
+<td><span style="color: peru">a</span> = zip([1,2,3], [<span style="color: maroon">'a'</span>, <span style="color: maroon">'b'</span>, <span style="color: maroon">'c'</span>])</td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="dictionaries" id="dictionaries"></a><a href="#dictionaries-note">dictionaries</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="dict-literal" id="dict-literal"></a><a href="#dict-literal-note">literal</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>d = { "t":1, "f":0 };<br><span style="color: gray"><span style="white-space: pre-wrap;">//</span> keys do not need to be quoted if they<br><span style="white-space: pre-wrap;">//</span> are a legal JavaScript variable name<br><span style="white-space: pre-wrap;">//</span>and not a reserved word</span></td>
+<td>$<span style="color: peru">d</span> = [<span style="color: maroon">"t"</span> =&gt; 1, <span style="color: maroon">"f"</span> =&gt; 0];<br><br><span style="color: gray"># older syntax:</span><br>
+$<span style="color: peru">d</span> = array(<span style="color: maroon">"t"</span> =&gt; 1, <span style="color: maroon">"f"</span> =&gt; 0);</td>
+<td><span style="color: peru">d</span> = { <span style="color: maroon">'t'</span>:1, <span style="color: maroon">'f'</span>:0 }</td>
+
+</tr><tr><td><a name="dict-size" id="dict-size"></a><a href="#dict-size-note">size</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>var size = 0;<br>
+for (var k in d) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>if (d.hasOwnProperty(k)) size++;<br>
+}</td>
+<td>count($<span style="color: peru">d</span>)</td>
+<td><span style="color: purple">len</span>(d)</td>
+
+</tr><tr><td><a name="dict-lookup" id="dict-lookup"></a><a href="#dict-lookup-note">lookup</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>d.t<br>
+d["t"]</td>
+<td>$<span style="color: peru">d</span>[<span style="color: maroon">"t"</span>]</td>
+<td>d[<span style="color: maroon">'t'</span>]</td>
+
+</tr><tr><td><a name="dict-update" id="dict-update"></a><a href="#dict-update-note">update</a></td>
+<td>d["t"] = 2;<br>
+d.t = 2;</td>
+<td>$<span style="color: peru">d</span>[<span style="color: maroon">"t"</span>] = 2;</td>
+<td>d[<span style="color: maroon">'t'</span>] = 2</td>
+
+</tr><tr><td><a name="dict-out-of-bounds" id="dict-out-of-bounds"></a><a href="#dict-out-of-bounds-note">out-of-bounds behavior</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>var d = {};<br><span style="color: gray"><span style="white-space: pre-wrap;">//</span> sets s to undefined:</span><br>
+var s = d["lorem"];<br><span style="color: gray"><span style="white-space: pre-wrap;">//</span> adds key/value pair:</span><br>
+d["lorem"] = "ipsum";</td>
+<td>$<span style="color: peru">d</span> = [];<br><span style="color: gray"># sets $s to NULL:</span><br>
+$<span style="color: peru">s</span> = $<span style="color: peru">d</span>[<span style="color: maroon">"lorem"</span>];<br><span style="color: gray"># adds key/value pair:</span><br>
+$<span style="color: peru">d</span>[<span style="color: maroon">"lorem"</span>] = <span style="color: maroon">"ipsum"</span>;</td>
+<td><span style="color: peru">d</span> = {}<br><span style="color: gray"># raises KeyError:</span><br><span style="color: peru">s</span> = d[<span style="color: maroon">'lorem'</span>]<br><span style="color: gray"># adds key/value pair:</span><br>
+d[<span style="color: maroon">'lorem'</span>] = <span style="color: maroon">'ipsum'</span></td>
+
+</tr><tr><td><a name="dict-key-check" id="dict-key-check"></a><a href="#dict-key-check-note">is key present</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>d.hasOwnProperty("t");</td>
+<td>array_key_exists(<span style="color: maroon">"y"</span>, $<span style="color: peru">d</span>);</td>
+<td><span style="color: maroon">'y'</span> <span style="color: purple">in</span> d</td>
+
+</tr><tr><td><a name="dict-delete" id="dict-delete"></a><a href="#dict-delete-note">delete entry</a></td>
+<td>delete d["t"];<br>
+delete d.t;</td>
+<td>$<span style="color: peru">d</span> = [1 =&gt; <span style="color: maroon">"t"</span>, 0 =&gt; <span style="color: maroon">"f"</span>];<br>
+unset($<span style="color: peru">d</span>[1]);</td>
+<td><span style="color: peru">d</span> = {1: <span style="color: purple">True</span>, 0: <span style="color: purple">False</span>}<br><span style="color: purple">del</span> d[1]</td>
+
+</tr><tr><td><a name="dict-assoc-array" id="dict-assoc-array"></a><a href="#dict-assoc-array-note">from array of pairs, from even length array</a></td>
+<td>var a = [["a", 1], ["b", 2], ["c", 3]];<br>
+var d = _.object(a);<br><br><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td><span style="color: peru">a</span> = [[<span style="color: maroon">'a'</span>, 1], [<span style="color: maroon">'b'</span>, 2], [<span style="color: maroon">'c'</span>, 3]]<br><span style="color: peru">d</span> = <span style="color: purple">dict</span>(a)<br><br><span style="color: peru">a</span> = [<span style="color: maroon">'a'</span>, 1, <span style="color: maroon">'b'</span>, 2, <span style="color: maroon">'c'</span>, 3]<br><span style="color: peru">d</span> = <span style="color: purple">dict</span>(<span style="color: purple">zip</span>(a[::2], a[1::2]))</td>
+
+</tr><tr><td><a name="dict-merge" id="dict-merge"></a><a href="#dict-merge-note">merge</a></td>
+<td>var d1 = {"a": 1, "b": 2};<br>
+var d2 = {"c": 3, "d": 4};<br>
+d1 = _.extend(d1, d2);</td>
+<td>$<span style="color: peru">d1</span> = [<span style="color: maroon">"a"</span> =&gt; 1, <span style="color: maroon">"b"</span> =&gt; 2];<br>
+$<span style="color: peru">d2</span> = [<span style="color: maroon">"b"</span> =&gt; 3, <span style="color: maroon">"c"</span> =&gt; 4];<br>
+$<span style="color: peru">d1</span> = array_merge($<span style="color: peru">d1</span>, $<span style="color: peru">d2</span>);</td>
+<td><span style="color: peru">d1</span> = {<span style="color: maroon">'a'</span>: 1, <span style="color: maroon">'b'</span>: 2}<br><span style="color: peru">d2</span> = {<span style="color: maroon">'b'</span>: 3, <span style="color: maroon">'c'</span>: 4}<br>
+d1.update(d2)</td>
+
+</tr><tr><td><a name="dict-invert" id="dict-invert"></a><a href="#dict-invert-note">invert</a></td>
+<td>var to_num = {'t': 1, 'f': 0};<br>
+var to_let = _.invert(to_num);</td>
+<td>$<span style="color: peru">to_num</span> = [<span style="color: maroon">"t"</span> =&gt; 1, <span style="color: maroon">"f"</span> =&gt; 0];<br>
+$<span style="color: peru">to_let</span> = array_flip($<span style="color: peru">to_num</span>);</td>
+<td><span style="color: peru">to_num</span> = {<span style="color: maroon">'t</span>': 1, <span style="color: maroon">'f'</span>: 0}<br><span style="color: gray"># dict comprehensions added in 2.7:</span><br><span style="color: peru">to_let</span> = {v: k <span style="color: purple">for</span> k, v<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">in</span> to_num.items()}</td>
+
+</tr><tr><td><a name="dict-iter" id="dict-iter"></a><a href="#dict-iter-note">iteration</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>for (var k in d) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: gray"><em>use k or d[k]</em></span><br>
+}</td>
+<td><span style="color: purple">foreach</span> ($<span style="color: peru">d</span> as $<span style="color: peru">k</span> =&gt; $<span style="color: peru">v</span>) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: gray"><em>code</em></span><br>
+}</td>
+<td><span style="color: purple">for</span> k, v <span style="color: purple">in</span> d.iteritems():<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: gray"><em>code</em></span><br><br><span style="color: gray"><em>Python 3:</em></span><br><span style="color: purple">for</span> k, v <span style="color: purple">in</span> d.items():<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: gray"><em>code</em></span></td>
+
+</tr><tr><td><a name="dict-key-val" id="dict-key-val"></a><a href="#dict-key-val-note">keys and values as arrays</a></td>
+<td>_.keys(d)<br>
+_.values(d)</td>
+<td>array_keys($<span style="color: peru">d</span>)<br>
+array_values($<span style="color: peru">d</span>)</td>
+<td>d.keys()<br>
+d.values()<br><br><span style="color: gray"><em>Python 3:</em></span><br>
+list(d.keys())<br>
+list(d.values())</td>
+
+</tr><tr><td><a name="dict-sort-values" id="dict-sort-values"></a><a href="#dict-sort-values-note">sort by values</a></td>
+<td>function cmp2(a, b) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>if (a[1] &lt; b[1]) { return -1; }<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>if (a[1] &gt; b[1]) { return 1; }<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>return 0;<br>
+}<br><br>
+for (p in _.pairs(d).sort(cmp2)) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert(p[0] + ": " + p[1]);<br>
+}</td>
+<td>asort($<span style="color: peru">d</span>);<br><br><span style="color: purple">foreach</span> ($<span style="color: peru">d</span> <span style="color: purple">as</span> $<span style="color: peru">k</span> =&gt; $<span style="color: peru">v</span>) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span> <span style="color: maroon">"$k: $v\n"</span>;<br>
+}</td>
+<td><span style="color: purple">from</span> operator <span style="color: purple">import</span> itemgetter<br><br><span style="color: peru">pairs</span> = <span style="color: purple">sorted</span>(d.iteritems(),<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>key=itemgetter(1))<br><br><span style="color: purple">for</span> k, v <span style="color: purple">in</span> pairs:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: maroon">'{}: {}'</span>.format(k, v))</td>
+
+</tr><tr><td><a name="dict-default-val" id="dict-default-val"></a><a href="#dict-default-val-note">default value, computed value</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$<span style="color: peru">counts</span> = [];<br>
+$<span style="color: peru">counts</span>[<span style="color: maroon">'foo'</span>] += 1;<br><br><span style="color: gray"><em>extend</em> ArrayObject <em>for computed values and defaults other than zero or empty string.</em></span></td>
+<td><span style="color: purple">from</span> collections <span style="color: purple">import</span> defaultdict<br><br><span style="color: peru">counts</span> = defaultdict(<span style="color: purple">lambda</span>: 0)<br>
+counts[<span style="color: maroon">'foo'</span>] += 1<br><br><span style="color: purple">class</span> <span style="color: green">Factorial</span>(dict):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">def</span> <span style="color: mediumblue"><span style="white-space: pre-wrap;">__missing__</span></span>(<span style="color: purple">self</span>, k):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">if</span> k &gt; 1:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> k * <span style="color: purple">self</span>[k-1]<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">else</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> 1<br><br><span style="color: peru">factorial</span> = Factorial()</td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="functions" id="functions"></a><a href="#functions-note">functions</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="def-func" id="def-func"></a><a href="#def-func-note">define function</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>function add(x, y) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>return x+y;<br>
+}</td>
+<td><span style="color: purple">function</span> <span style="color: #0000cd">add3</span>($<span style="color: peru">x1</span>, $<span style="color: peru">x2</span>, $<span style="color: peru">x3</span>)<br>
+{<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> $<span style="color: peru">x1</span> + $<span style="color: peru">x2</span> + $<span style="color: peru">x3</span>;<br>
+}</td>
+<td><span style="color: purple">def</span> <span style="color: #0000cd">add3</span>(x1, x2, x3):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> x1 + x2 + x3</td>
+
+</tr><tr><td><a name="invoke-func" id="invoke-func"></a><a href="#invoke-func-note">invoke function</a></td>
+<td>add(1, 2)</td>
+<td>add3(1, 2, 3);<br><br><span style="color: gray"># function names are case insensitive:</span><br>
+ADD3(1, 2, 3);</td>
+<td>add3(1, 2, 3)</td>
+
+</tr><tr><td><a name="missing-arg" id="missing-arg"></a><a href="#missing-arg-note">missing argument behavior</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>set to</em> undefined</span></td>
+<td><span style="color: gray"><em>set to</em> NULL <em>with warning</em></span></td>
+<td><span style="color: gray"><em>raises</em> TypeError <em>if number of arguments doesn't match function arity</em></span></td>
+
+</tr><tr><td><a name="default-arg" id="default-arg"></a><a href="#default-arg-note">default argument</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: purple">function</span> <span style="color: mediumblue">my_log</span>($<span style="color: peru">x</span>, $<span style="color: peru">base</span>=10)<br>
+{<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> log($<span style="color: peru">x</span>) / log($<span style="color: peru">base</span>);<br>
+}<br><br>
+my_log(42);<br>
+my_log(42, <span style="color: teal">M_E</span>);</td>
+<td><span style="color: purple">import</span> math<br><br><span style="color: purple">def</span> <span style="color: mediumblue">my_log</span>(x, base=10):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> math.log(x) / math.log(base)<br><br>
+my_log(42)<br>
+my_log(42, math.e)</td>
+
+</tr><tr><td><a name="variable-num-arg" id="variable-num-arg"></a><a href="#variable-num-arg-note">variable number of arguments</a></td>
+<td><span style="color: gray"><em>args in</em></span> arguments[0], arguments[1], <span style="color: gray"><em>… with number of args in</em></span> arguments.length</td>
+<td><span style="color: purple">function</span> <span style="color: mediumblue">first_and_last</span>()<br>
+{<br><br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">arg_cnt</span> = func_num_args();<br><br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">if</span> ($<span style="color: peru">arg_cnt</span> &gt;= 1) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">n</span> = func_get_arg(0);<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"first: "</span> . $<span style="color: peru">n</span> . <span style="color: maroon">"\n"</span>;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>}<br><br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">if</span> ($<span style="color: peru">arg_cnt</span> &gt;= 2) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">a</span> = func_get_args();<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">n</span> = $<span style="color: peru">a</span>[$<span style="color: peru">arg_cnt</span>-1];<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"last: "</span> . $<span style="color: peru">n</span> . <span style="color: maroon">"\n"</span>;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>}<br>
+}</td>
+<td><span style="color: purple">def</span> <span style="color: mediumblue">first_and_last</span>(*a):<br><br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">if len</span>(a) &gt;= 1:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: maroon">'first: '</span> + <span style="color: purple">str</span>(a[0]))<br><br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">if len</span>(a) &gt;= 2:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: maroon">'last: '</span> + <span style="color: purple">str</span>(a[-1]))</td>
+
+</tr><tr><td><a name="apply-func" id="apply-func"></a><a href="#apply-func-note">pass array elements as separate arguments</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$<span style="color: peru">a</span> = [1, 2, 3];<br><br>
+call_user_func_array(<span style="color: maroon">"add3"</span>, $<span style="color: peru">a</span>);</td>
+<td><span style="color: peru">a</span> = [2, 3]<br><br>
+add3(1, *a)<br><br><span style="color: gray"># splat operator can only be used once<br>
+# and must appear after other<br>
+# unnamed arguments</span></td>
+
+</tr><tr><td><a name="named-param" id="named-param"></a><a href="#named-param-note">named parameters</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: purple">def</span> <span style="color: mediumblue">fequal</span>(x, y, eps=0.01):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return abs</span>(x - y) &lt; eps<br><br>
+fequal(1.0, 1.001)<br>
+fequal(1.0, 1.001, eps=0.1<span style="white-space: pre-wrap;">**</span>10)</td>
+
+</tr><tr><td><a name="pass-num-str-by-ref" id="pass-num-str-by-ref"></a><a href="#pass-num-str-by-ref-note">pass number or string by reference</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>not possible</em></span></td>
+<td><span style="color: purple">function</span> <span style="color: #0000cd">impure</span>(&amp;$<span style="color: peru">x</span>, &amp;$<span style="color: peru">y</span>)<br>
+{<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">x</span> += 1;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">y</span> .= <span style="color: maroon">"ly"</span>;<br>
+}<br><br>
+$<span style="color: peru">n</span> = 7;<br>
+$<span style="color: peru">s</span> = <span style="color: maroon">"hard"</span>;<br>
+impure($<span style="color: peru">n</span>, $<span style="color: peru">s</span>);</td>
+<td><span style="color: gray"><em>not possible</em></span></td>
+
+</tr><tr><td><a name="pass-array-dict-by-ref" id="pass-array-dict-by-ref"></a><a href="#pass-array-dict-by-ref-note">pass array or dictionary by reference</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>function impure(x, y) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>x[2] = 5;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>y["f"] = -1;<br>
+}<br><br>
+var a = [1, 2, 3];<br>
+var d = {"t": 1, "f": 0};<br>
+impure(a, d);</td>
+<td><span style="color: purple">function</span> <span style="color: #0000cd">impure</span>(&amp;$<span style="color: peru">x</span>, &amp;$<span style="color: peru">y</span>)<br>
+{<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">x</span>[2] = 5;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">y</span>[<span style="color: maroon">"f"</span>] = -1;<br>
+}<br><br>
+$<span style="color: peru">a</span> = [1, 2, 3];<br>
+$<span style="color: peru">d</span> = [<span style="color: maroon">"t"</span> =&gt; 1, <span style="color: maroon">"f"</span> =&gt; 0];<br>
+impure($<span style="color: peru">a</span>, $<span style="color: peru">d</span>);</td>
+<td><span style="color: purple">def</span> <span style="color: #0000cd">impure</span>(x, y):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>x[2] = 5<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>y[<span style="color: maroon">'f'</span>] = -1<br><br><span style="color: peru">a</span> = [1, 2, 3]<br><span style="color: peru">d</span> = {<span style="color: maroon">'t'</span>:1, <span style="color: maroon">'f'</span>:0}<br>
+impure(a, d)</td>
+
+</tr><tr><td><a name="retval" id="retval"></a><a href="#retval-note">return value</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>return <span style="color: gray"><em>arg or</em></span> undefined. <span style="color: gray"><em>If invoked with</em></span> new <span style="color: gray"><em>and return value not an object, returns</em></span> this</td>
+<td><span style="color: gray">return <em>arg or</em> NULL</span></td>
+<td><span style="color: gray">return <em>arg or</em> None</span></td>
+
+</tr><tr><td><a name="multiple-retval" id="multiple-retval"></a><a href="#multiple-retval-note">multiple return values</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: purple">function</span> <span style="color: #0000cd">first_and_second</span>(&amp;$<span style="color: peru">a</span>)<br>
+{<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> [$<span style="color: peru">a</span>[0], $<span style="color: peru">a</span>[1]];<br>
+}<br><br>
+$<span style="color: peru">a</span> = [1, 2, 3];<br>
+list($<span style="color: peru">x</span>, $<span style="color: peru">y</span>) =<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>first_and_second($a);</td>
+<td><span style="color: purple">def</span> <span style="color: #0000cd">first_and_second</span>(a):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> a[0], a[1]<br><br><span style="color: peru">x</span>, <span style="color: peru">y</span> = first_and_second([1,2,3])</td>
+
+</tr><tr><td><a name="lambda" id="lambda"></a><a href="#lambda-note">lambda declaration</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>var sqr = function(x) { return x*x; }</td>
+<td>$<span style="color: peru">sqr</span> = function ($<span style="color: peru">x</span>) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>return $<span style="color: peru">x</span> * $<span style="color: peru">x</span>;<br>
+};</td>
+<td><span style="color: gray"># body must be an expression:</span><br><span style="color: peru">sqr</span> = <span style="color: purple">lambda</span> x: x * x</td>
+
+</tr><tr><td><a href="#lambda-note">lambda invocation</a></td>
+<td>sqr(2)</td>
+<td>$<span style="color: peru">sqr</span>(2)</td>
+<td>sqr(2)</td>
+
+</tr><tr><td><a name="func-as-val" id="func-as-val"></a><a href="#func-as-val-note">function as value</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>var func = add;</td>
+<td>$<span style="color: peru">func</span> = <span style="color: maroon">"add"</span>;</td>
+<td><span style="color: peru">func</span> = add</td>
+
+</tr><tr><td><a name="private-state-func" id="private-state-func"></a><a href="#private-state-func-note">function with private state</a></td>
+<td>function counter() {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>counter.i += 1;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>return counter.i;<br>
+}<br><br>
+counter.i = 0;<br>
+alert(counter());</td>
+<td><span style="color: purple">function</span> <span style="color: #0000cd">counter</span>()<br>
+{<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">static</span> $<span style="color: peru">i</span> = 0;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> ++$<span style="color: peru">i</span>;<br>
+}<br><br><span style="color: purple">echo</span> counter();</td>
+<td><span style="color: gray"># state not private:</span><br><span style="color: purple">def</span> <span style="color: #0000cd">counter</span>():<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>counter.i += 1<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> counter.i<br><br>
+counter.i = 0<br><span style="color: purple">print</span>(counter())</td>
+
+</tr><tr><td><a name="closure" id="closure"></a><a href="#closure-note">closure</a></td>
+<td>function make_counter() {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>var i = 0;<br><br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>return function() {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>i += 1;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>return i;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>}<br>
+}</td>
+<td><span style="color: purple">function</span> <span style="color: #0000cd">make_counter()</span><br>
+{<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">i</span> = 0;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> function () use (&amp;$<span style="color: peru">i</span>) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> ++$<span style="color: peru">i</span>;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>};<br>
+}<br><br>
+$<span style="color: peru">nays</span> = make_counter();<br><span style="color: purple">echo</span> $<span style="color: peru">nays</span>();</td>
+<td><span style="color: gray"># Python 3:</span><br><span style="color: purple">def</span> <span style="color: #0000cd">make_counter</span>():<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>i = 0<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">def</span> <span style="color: #0000cd">counter</span>():<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>nonlocal i<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>i += 1<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> i<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> counter<br><br>
+nays = make_counter()</td>
+
+</tr><tr><td><a name="generator" id="generator"></a><a href="#generator-note">generator</a></td>
+<td></td>
+<td><span style="color: gray"># PHP 5.5:</span><br><span style="color: purple">function</span> <span style="color: mediumblue">make_counter</span>() {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">i</span> = 0;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">while</span> (1) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">yield</span> ++$<span style="color: peru">i</span>;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>}<br>
+}<br><br>
+$<span style="color: peru">nays</span> = make_counter();<br><span style="color: gray"># does not return a value:</span><br>
+$<span style="color: peru">nays</span>-&gt;next();<br><span style="color: gray"># runs generator if generator has not<br>
+# yet yielded:</span><br><span style="color: purple">echo</span> $<span style="color: peru">nays</span>-&gt;current();</td>
+<td><span style="color: gray"># The itertools library contains<br>
+# standard generators.<br>
+# c.f. itertools.count()</span><br><br><span style="color: purple">def</span> <span style="color: #0000cd">make_counter</span>():<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>i = 0<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">while True</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>i += 1<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">yield</span> i<br><br><span style="color: peru">nays</span> = make_counter()<br><span style="color: purple">print</span>(nays.next())</td>
+
+</tr><tr><td><a name="decorator" id="decorator"></a><a href="#decorator-note">decorator</a></td>
+<td></td>
+<td></td>
+<td><span style="color: purple">def</span> <span style="color: mediumblue">logcall</span>(f):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">def</span> <span style="color: mediumblue">wrapper</span>(*a, **opts):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: maroon">'calling '</span> + f.<span style="white-space: pre-wrap;">__name__</span>)<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>f(*a, **opts)<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: maroon">'called '</span> + f.<span style="white-space: pre-wrap;">__name__</span>)<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> wrapper<br><br><span style="color: green">@logcall</span><br><span style="color: purple">def</span> <span style="color: mediumblue">square</span>(x):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">return</span> x * x</td>
+
+</tr><tr><td><a name="op-as-func" id="op-as-func"></a><a href="#op-as-func-note">operator as function</a></td>
+<td></td>
+<td></td>
+<td><span style="color: purple">import</span> operator<br><br>
+operator.mul(3, 7)<br><br><span style="color: peru">a</span> = [<span style="color: maroon">'foo'</span>, <span style="color: maroon">'bar'</span>, <span style="color: maroon">'baz'</span>]<br>
+operator.itemgetter(2)(a)</td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="execution-control" id="execution-control"></a><a href="#execution-control-note">execution control</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="if" id="if"></a><a href="#if-note">if</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>if (0 == n) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert("no hits");<br>
+} else if (1 == n) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert("1 hit");<br>
+} else {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert(n + " hits");<br>
+}</td>
+<td><span style="color: purple">if</span> ( 0 == $<span style="color: peru">n</span> ) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"no hits\n"</span>;<br>
+} <span style="color: purple">elseif</span> ( 1 == $<span style="color: peru">n</span> ) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"one hit\n"</span>;<br>
+} <span style="color: purple">else</span> {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"$n hits\n"</span>;<br>
+}</td>
+<td><span style="color: purple">if</span> 0 == n:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: maroon">'no hits'</span>)<br><span style="color: purple">elif</span> 1 == n:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: maroon">'one hit'</span>)<br><span style="color: purple">else</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: purple">str</span>(n) + <span style="color: maroon">' hits'</span>)</td>
+
+</tr><tr><td><a name="switch" id="switch"></a><a href="#switch-note">switch</a></td>
+<td>switch (n) {<br>
+case 0:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert("no hits\n");<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>break;<br>
+case 1:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert("one hit\n");<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>break;<br>
+default:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert(3 + " hits\n");<br>
+}</td>
+<td><span style="color: purple">switch</span> ($<span style="color: peru">n</span>) {<br><span style="color: purple">case</span> <span style="color: green">0</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"no hits\n"</span>;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">break</span>;<br><span style="color: purple">case</span> <span style="color: green">1</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"one hit\n"</span>;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">break</span>;<br><span style="color: purple">default</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"$n hits\n"</span>;<br>
+}</td>
+<td><span style="color: gray"><em>none</em></span></td>
+
+</tr><tr><td><a name="while" id="while"></a><a href="#while-note">while</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>while (i &lt; 100) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>i += 1;<br>
+}</td>
+<td><span style="color: purple">while</span> ( $<span style="color: peru">i</span> &lt; 100 ) { $<span style="color: peru">i</span>++; }</td>
+<td><span style="color: purple">while</span> i &lt; 100:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>i += 1</td>
+
+</tr><tr><td><a name="for" id="for"></a><a href="#for-note">c-style for</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>for (var i = 0; i &lt; 10; i++) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert(i);<br>
+}</td>
+<td><span style="color: purple">for</span> ($<span style="color: peru">i</span> = 1; $<span style="color: peru">i</span> &lt;= 10; $<span style="color: peru">i</span>++) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"$i\n"</span>;<br>
+}</td>
+<td><span style="color: gray"><em>none</em></span></td>
+
+</tr><tr><td><a name="break-continue" id="break-continue"></a><a href="#break-continue-note">break, continue, redo</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>break continue <span style="color: gray"><em>none</em></span></td>
+<td><span style="color: purple">break continue</span> <span style="color: gray"><em>none</em></span></td>
+<td><span style="color: purple">break continue</span> <span style="color: gray"><em>none</em></span></td>
+
+</tr><tr><td><a name="control-keywords" id="control-keywords"></a><a href="#control-keywords-note">control structure keywords</a></td>
+<td>case catch debugger default do else finally for if switch throw try while</td>
+<td><span style="color: purple">case default do else elseif for foreach goto if switch while</span></td>
+<td><span style="color: purple">elif else for if while</span></td>
+
+</tr><tr><td><a name="do" id="do"></a><a href="#do-note">what do does</a></td>
+<td><span style="color: gray"><em>starts body of a</em> do-while <em>loop, a loop which checks the condition after the body is executed</em></span></td>
+<td><span style="color: gray"><em>starts body of a</em> do-while <em>loop, a loop which checks the condition after the body is executed</em></span></td>
+<td><span style="color: gray"><em>raises</em> NameError <em>unless a value was assigned to it</em></span></td>
+
+</tr><tr><td><a name="statement-modifiers" id="statement-modifiers"></a><a href="#statement-modifiers-note">statement modifiers</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="exceptions" id="exceptions"></a><a href="#exceptions-note">exceptions</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="base-exc" id="base-exc"></a><a href="#base-exc-note">base exception</a></td>
+<td><span style="color: gray"><em>Any value can be thrown.</em></span></td>
+<td>Exception</td>
+<td>BaseException<br><br><span style="color: gray"><em>User-defined exceptions should subclass</em> Exception.</span><br><br><span style="color: gray"><em>In Python 2 old-style classes can be thrown.</em></span></td>
+
+</tr><tr><td><a name="predefined-exc" id="predefined-exc"></a><a href="#predefined-exc-note">predefined exceptions</a></td>
+<td>Error<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>EvalError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>RangeError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>ReferenceError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>SyntaxError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>TypeError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>URIError</td>
+<td>Exception<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>LogicException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>BadFunctionCallException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>BadMethodCallException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>DomainException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>InvalidArgumentException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>LengthException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>OutOfRangeException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>RuntimeException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>OutOfBoundsException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>OverflowException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>RangeException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>UnderflowException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>UnexpectedValueException</td>
+<td>BaseException<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>SystemExit<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>KeyboardInterrupt<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>GeneratorExit<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>Exception<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>StopIteration<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>StandardError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>BufferError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>ArithmeticError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>FloatingPointError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>OverflowError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>ZeroDivisionError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>AssertionError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>AttributeError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>EnvironmentError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span> EOFError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>ImportError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>LookupError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>IndexError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>KeyError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>MemoryError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>NameError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>ReferenceError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>RuntimeError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>NotImplementedError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>SyntaxError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>SystemError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>TypeError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>ValueError<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>UnicodeError<br><br><span style="color: gray"><em>Python 3 has a different tree</em></span></td>
+
+</tr><tr><td><a name="raise-exc" id="raise-exc"></a><a href="#raise-exc-note">raise exception</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>throw new Error("bad arg");</td>
+<td><span style="color: purple">throw new</span> <span style="color: green">Exception</span>(<span style="color: maroon">"bad arg"</span>);</td>
+<td><span style="color: purple">raise</span> <span style="color: green">Exception</span>(<span style="color: maroon">'bad arg'</span>)</td>
+
+</tr><tr><td><a name="catch-exc" id="catch-exc"></a><a href="#catch-exc-note">catch exception</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>try {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>risky();<br>
+}<br>
+catch (e) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert("risky failed: " + e.message);<br>
+}</td>
+<td><span style="color: purple">try</span> {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>risky();<br>
+} <span style="color: purple">catch</span> (<span style="color: green">Exception</span> $<span style="color: peru">e</span>) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> <span style="color: maroon">"risky failed: "</span>,<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>$<span style="color: peru">e</span>-&gt;getMessage(), <span style="color: maroon">"\n"</span>;<br>
+}</td>
+<td><span style="color: purple">try</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>risky()<br><span style="color: purple">except</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: maroon">'risky failed'</span>)</td>
+
+</tr><tr><td><a name="re-raise-exc" id="re-raise-exc"></a><a href="#re-raise-exc-note">re-raise exception</a></td>
+<td>try {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>throw new Error("bam!");<br>
+}<br>
+catch (e) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert("re-raising<span style="white-space: pre-wrap;">...</span>");<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>throw e;<br>
+}</td>
+<td></td>
+<td><span style="color: purple">try</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">raise</span> <span style="color: green">Exception</span>(<span style="color: maroon">'bam!'</span>)<br><span style="color: purple">except</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(<span style="color: maroon">'re-raising<span style="white-space: pre-wrap;">...</span>'</span>)<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">raise</span></td>
+
+</tr><tr><td><a name="last-exc-global" id="last-exc-global"></a><a href="#last-exc-global-note">global variable for last exception</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>last exception:</em> sys.exc_info()[1]</span></td>
+
+</tr><tr><td><a name="def-exc" id="def-exc"></a><a href="#def-exc-note">define exception</a></td>
+<td>function Bam(msg) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>this.message = msg;<br>
+}<br><br>
+Bam.prototype = new Error;</td>
+<td><span style="color: purple">class</span> <span style="color: green">Bam</span> <span style="color: purple">extends</span> <span style="color: green">Exception</span><br>
+{<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">function</span> <span style="color: #0000cd"><span style="white-space: pre-wrap;">__</span>construct</span>()<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>{<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: teal">parent</span>::<span style="white-space: pre-wrap;">__</span>construct(<span style="color: maroon">"bam!"</span>);<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>}<br>
+}</td>
+<td><span style="color: purple">class</span> <span style="color: green">Bam</span>(<span style="color: green">Exception</span>):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">def</span> <span style="color: #0000cd"><span style="white-space: pre-wrap;">__init__</span></span>(<span style="color: purple">self</span>):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">super</span>(Bam, <span style="color: purple">self</span>).<span style="white-space: pre-wrap;">__init__</span>(<span style="color: maroon">'bam!'</span>)</td>
+
+</tr><tr><td><a name="name-exc" id="name-exc"></a><a href="#name-exc-note">catch exception by type</a></td>
+<td>try {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>throw new Bam("bam!");<br>
+}<br>
+catch (e) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>if (e instanceof Bam) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>alert(e.message);<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>}<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>else {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>throw e;<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>}<br>
+}</td>
+<td><span style="color: purple">try</span> {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">throw new</span> <span style="color: green">Bam</span>;<br>
+} <span style="color: purple">catch</span> (<span style="color: green">Bam</span> $<span style="color: peru">e</span>) {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">echo</span> $<span style="color: peru">e</span>-&gt;getMessage(), <span style="color: maroon">"\n"</span>;<br>
+}</td>
+<td><span style="color: purple">try</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">raise</span> Bam()<br><span style="color: purple">except</span> Bam <span style="color: purple">as</span> e:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">print</span>(e)</td>
+
+</tr><tr><td><a name="finally-ensure" id="finally-ensure"></a><a href="#finally-ensure-note">finally/ensure</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td>acquire_resource();<br>
+try {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>risky();<br>
+}<br>
+finally {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>release_resource();<br>
+}</td>
+<td><span style="color: gray"><em>PHP 5.5:</em></span><br>
+acquire_resource();<br>
+try {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>risky();<br>
+}<br>
+finally {<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>release_resource();<br>
+}</td>
+<td>acquire_resource()<br><span style="color: purple">try</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>risky()<br><span style="color: purple">finally</span>:<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>release_resource()</td>
+
+</tr><tr><th colspan="5" style="background: rgb(220, 220, 220);"><a name="concurrency" id="concurrency"></a><a href="#concurrency-note">concurrency</a></th>
+</tr><tr><th></th>
+<th>javascript</th>
+<th>php</th>
+<th>python</th>
+
+</tr><tr><td><a name="start-thread" id="start-thread"></a><a href="#start-thread-note">start thread</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: purple">class</span> <span style="color: green">sleep10</span>(threading.Thread):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="color: purple">def</span> <span style="color: #0000cd">run</span>(<span style="color: purple">self</span>):<br><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span><span style="white-space: pre-wrap;">&nbsp;&nbsp;</span>time.sleep(10)<br><br><span style="color: peru">thr</span> = sleep10()<br>
+thr.start()</td>
+
+</tr><tr><td><a name="wait-on-thread" id="wait-on-thread"></a><a href="#wait-on-thread-note">wait on thread</a><br><span style="white-space: pre-wrap;">&nbsp;</span></td>
+<td></td>
+<td></td>
+<td>thr.join()</td>
+
+</tr><tr><th></th>
+<th><span style="color: #efefef"><span style="white-space: pre-wrap;">____________________________________________</span></span></th>
+<th><span style="color: #efefef"><span style="white-space: pre-wrap;">____________________________________________</span></span></th>
+<th><span style="color: #efefef"><span style="white-space: pre-wrap;">_____________________________________________</span></span></th>
+
+</tr></tbody></table>
