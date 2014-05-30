@@ -1,0 +1,75 @@
+python feladat ötletek:
+- you have simple English word like: 'supercalifragilisticexpialidocious' How would you form string that has every second letter in capital (upper case).
+- péntek13 gyakorisága adott évben
+- anagramma generátor
+- converts between Celcius and Fahrenheit
+- egy program ami az adott könyvtárban rekurzívan megkeresi a 24 órán belül módosítottakat
+- Morse-code generator/parser
+- Take the english dictionary attached to:
+    http://www.daniweb.com/techtalkforums/post160495-8.html
+    and find out the words that are palindromes (spell the same forward and backward)
+-
+Create a letter pyramid in Python.
+
+let's say the user enters H
+the pyramid should like this:
+       A
+      ABA
+     ABCBA
+    ABCDCBA
+   ABCDEDCBA
+  ABCDEFEDCBA
+ ABCDEFGFEDCBA
+ABCDEFGHGFEDCBA
+
+- Write a function primes(n) that returns a list of primes less than n.
+- Szerencsekerék
+- console blackjack game
+
+- You have the following data statements:
+
+data = """
+Jim likes Larry and Jean, but hates Kim.
+Bob loves Jean, and likes Larry and Kim.
+Jean loves Bob, likes Jim, but hates Kim.
+Kim hates Jim, likes Larry and Bob.
+Larry loves Martin, and hates Karl and Jean.
+"""
+Write a program that lists each person and whom they love, like and hate.
+- Write a Python program that calculates pi to a precision of 100 decimal places.
+
+- Write a program that generates acronyms, for instance it would turn the string "National Aeronautics and Space Administration" into NASA for short. Notice that words like "and", "the" are most often ignored.
+
+- Check for all happy numbers in a range
+- rock, paper and scissors game
+
+- Write a program that gets that latest comic from your favourite webcomic.
+For this you could use urllib to download the images.
+
+- program ami kiírja mit eszünk ma a Marosban
+
+- Take a group of people and keep track of their personal information like first name, last name, gender, age, and let's say bowling score. You want to know who is the youngest bowler, who has the highest score, and is there an age-score relation.
+
+- Telefonkönyv (csv fájlból és/vagy adatbázisból)
+
+- Write a function that returns the longer of two strings or the first string if equal in length.
+- 2048 game in console
+
+- GOOD PROJECTS TO CODE IN PYTHON
+1. A recursive tic-tac-toe program that never loses (but can be drawn).
+2. A rotating cube.
+3. The eight queens puzzle solver.
+4. The sliding block puzzle (the 8-puzzle).
+5. Conway's The Game of Life (easy).
+6. Finding the shortest route in a graph (map of Romania).
+7. The Mandelbroit set and Julia sets.
+8. The Game of Pong.
+
+- Create a little alarm utility that runs in the background and will beep after a set amount of time.
+
+- Create a function that shifts elements of a list in circular order.
+For instance [1,2,3,4,5] --> [5,1,2,3,4] etc.
+
+- Make a password generator where the user can enter how many characters they won't it to be and if the want symbols or not. Then it will generate passwords with Caps, Lowercase and numbers 0-9.
+
+
